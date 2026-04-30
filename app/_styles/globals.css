@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@tailwind utilities;
+
+@theme {
+  --font-montserrat: var(--font-montserrat);
+  --font-sans: var(--font-source-sans);
+}
+
+@layer base {
+  h1 {
+    @apply text-6xl font-bold sm:text-8xl;
+  }
+
+  p {
+    @apply text-xl text-gray-400;
+  }
+}
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  scroll-behavior: smooth;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #010101;
+  color: #fafafa;
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-source-sans);
+  letter-spacing: 0.08em;
+  overflow-x: hidden;
+}
+
+canvas {
+  touch-action: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-montserrat);
+}
+
+.hero-container {
+  background: rgba(255, 255, 255, 0.05); /* Very transparent white */
+  backdrop-filter: blur(15px) saturate(120%); /* The "Glass" effect */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 2rem;
+  /* Ensure this sits on top of the Canvas */
+  z-index: 10;
+  pointer-events: none; /* Allows mouse to pass through to the 3D scene */
+}
