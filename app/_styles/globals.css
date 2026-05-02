@@ -5,15 +5,34 @@
 @theme {
   --font-montserrat: var(--font-montserrat);
   --font-sans: var(--font-source-sans);
+  --color-light: #fafafa;
 }
 
 @layer base {
   h1 {
-    @apply text-6xl font-bold sm:text-8xl;
+    @apply text-6xl font-bold;
   }
 
-  p {
-    @apply text-xl text-gray-400;
+  h2 {
+    @apply text-[40px] font-semibold;
+  }
+
+  h3 {
+    @apply text-[32px] font-semibold;
+  }
+
+  h4 {
+    @apply text-[24px] font-semibold;
+  }
+
+  p,
+  ul,
+  li {
+    @apply text-xl;
+  }
+
+  ul {
+    @apply font-light;
   }
 }
 
@@ -64,4 +83,8 @@ h6 {
   /* Ensure this sits on top of the Canvas */
   z-index: 10;
   pointer-events: none; /* Allows mouse to pass through to the 3D scene */
+}
+
+.can-scroll {
+  overflow-y: scroll !important;
 }

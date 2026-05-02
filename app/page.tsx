@@ -26,7 +26,9 @@ export default function Home() {
       >
         <div className="z-20 text-center pointer-events-none">
           <h1 className="pointer-events-none">JAMES MCEVOY</h1>
-          <p className="mt-4 pointer-events-none">Scroll to start exploring.</p>
+          <p className="mt-4 pointer-events-none text-gray-400">
+            Scroll to start exploring.
+          </p>
         </div>
       </motion.section>
       {/* Track */}
