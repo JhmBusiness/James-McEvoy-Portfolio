@@ -11,6 +11,7 @@ import {
 import { createPortal } from "react-dom";
 import { projectData } from "../_lib/data";
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
+import TechnologyStackIcons from "../_components/projects/TechnologyStackIcons";
 
 export type ModalName =
   | "the-pond"
@@ -167,9 +168,7 @@ function ThePondModal() {
       <div>
         <h3>THE TECHNOLOGY STACK:</h3>
         <div className="my-6 flex justify-center items-center gap-10">
-          {logos.map((logo) => (
-            <img key={logo} src={logo} alt="SVG of web technology." />
-          ))}
+          <TechnologyStackIcons logos={logos} />
         </div>
         <p className="max-w-200 mx-auto">
           Next.js and TypeScript, are the foundation of the app; while Framer
@@ -260,7 +259,7 @@ function ThePondModal() {
         <Link
           href={liveUrl}
           aria-label="A button to the actual projects live site."
-          className="font-medium px-6 py-4 border border-light rounded-full"
+          className="font-medium px-6 py-4 border border-light rounded-full hover:bg-light duration-200 hover:text-dark"
           target="__blank"
         >
           Visit the project
@@ -301,9 +300,7 @@ function SmilingSoleReflexologyModal() {
       <div>
         <h3>THE TECHNOLOGY STACK:</h3>
         <div className="my-6 flex justify-center items-center gap-10">
-          {logos.map((logo) => (
-            <img key={logo} src={logo} alt="SVG of web technology." />
-          ))}
+          <TechnologyStackIcons logos={logos} />
         </div>
         <p className="max-w-200 mx-auto">
           Built with Next.js, and utilising its middleware; we protect the
@@ -385,7 +382,7 @@ function SmilingSoleReflexologyModal() {
         <Link
           href={liveUrl}
           aria-label="A button to the actual projects live site."
-          className="font-medium px-6 py-4 border border-light rounded-full"
+          className="font-medium px-6 py-4 border border-light rounded-full hover:bg-light duration-200 hover:text-dark"
           target="__blank"
         >
           Visit the project
@@ -426,9 +423,7 @@ function CobaltDevelopmentModal() {
       <div>
         <h3>THE TECHNOLOGY STACK:</h3>
         <div className="my-6 flex justify-center items-center gap-10">
-          {logos.map((logo) => (
-            <img key={logo} src={logo} alt="SVG of web technology." />
-          ))}
+          <TechnologyStackIcons logos={logos} />
         </div>
         <p className="max-w-200 mx-auto">
           Next.js is the framework used for this website, with Tailwind CSS and
@@ -486,7 +481,7 @@ function CobaltDevelopmentModal() {
         <Link
           href={liveUrl}
           aria-label="A button to the actual projects live site."
-          className="font-medium px-6 py-4 border border-light rounded-full"
+          className="font-medium px-6 py-4 border border-light rounded-full hover:bg-light duration-200 hover:text-dark"
           target="__blank"
         >
           Visit the project
@@ -527,9 +522,7 @@ function CobaltConstructionModal() {
       <div>
         <h3>THE TECHNOLOGY STACK:</h3>
         <div className="my-6 flex justify-center items-center gap-10">
-          {logos.map((logo) => (
-            <img key={logo} src={logo} alt="SVG of web technology." />
-          ))}
+          <TechnologyStackIcons logos={logos} />
         </div>
         <p className="max-w-200 mx-auto">
           This website is built using standard HTML, CSS, and JavaScript.
@@ -585,7 +578,7 @@ function CobaltConstructionModal() {
         <Link
           href={liveUrl}
           aria-label="A button to the actual projects live site."
-          className="font-medium px-6 py-4 border border-light rounded-full"
+          className="font-medium px-6 py-4 border border-light rounded-full hover:bg-light duration-200 hover:text-dark"
           target="__blank"
         >
           Visit the project
@@ -626,9 +619,7 @@ function CobaltHubModal() {
       <div>
         <h3>THE TECHNOLOGY STACK:</h3>
         <div className="my-6 flex justify-center items-center gap-10">
-          {logos.map((logo) => (
-            <img key={logo} src={logo} alt="SVG of web technology." />
-          ))}
+          <TechnologyStackIcons logos={logos} />
         </div>
         <p className="max-w-200 mx-auto">
           This website is built using standard HTML, CSS, and JavaScript.
@@ -666,7 +657,7 @@ function CobaltHubModal() {
         <Link
           href={liveUrl}
           aria-label="A button to the actual projects live site."
-          className="font-medium px-6 py-4 border border-light rounded-full"
+          className="font-medium px-6 py-4 border border-light rounded-full hover:bg-light duration-200 hover:text-dark"
           target="__blank"
         >
           Visit the project
@@ -794,7 +785,7 @@ function CobaltAluminiumModal() {
         <Link
           href={liveUrl}
           aria-label="A button to the actual projects live site."
-          className="font-medium px-6 py-4 border border-light rounded-full"
+          className="font-medium px-6 py-4 border border-light rounded-full hover:bg-light duration-200 hover:text-dark"
           target="__blank"
         >
           Visit the project

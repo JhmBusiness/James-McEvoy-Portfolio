@@ -1,7 +1,7 @@
 // This component works out the x and y coordinates for the project cards, and then maps the project data to create a grid (also including a fixed z coordinate).
 import { projectData } from "@/app/_lib/data";
 import { Dispatch, SetStateAction } from "react";
-import ProjectMonolith from "./ProjectMonolith";
+import ProjectMonolith from "../projects/ProjectMonolith";
 import { ModalName, useModal } from "@/app/_context/ModalContext";
 
 const COLUMN_COUNT = 3;

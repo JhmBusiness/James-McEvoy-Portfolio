@@ -6,6 +6,8 @@
   --font-montserrat: var(--font-montserrat);
   --font-sans: var(--font-source-sans);
   --color-light: #fafafa;
+  --color-dark: #010101;
+  --color-grey: #99a1af;
 }
 
 @layer base {

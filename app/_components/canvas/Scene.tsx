@@ -38,7 +38,7 @@ export default function Scene() {
           speed={1}
         />
 
-        <Rig activeId={activeId} />
+        <Rig />
         <HeroMesh />
         <ProjectsContainer setActiveId={setActiveId} />
 

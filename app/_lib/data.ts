@@ -118,3 +118,26 @@ export const projectData: ProjectMonolithDataProps[] = [
     brandColor: "#fa7f20",
   },
 ];
+
+export interface SkillDataProps {
+  id: number;
+  label: string;
+  src: string;
+}
+
+export const skillData: SkillDataProps[] = [
+  { id: 1, label: "Next.js", src: "/skills/nextjs.svg" },
+  { id: 2, label: "React.js", src: "/skills/react.svg" },
+  { id: 3, label: "TypeScript", src: "/skills/typescript.svg" },
+  { id: 4, label: "JavaScript", src: "/skills/javaScript.svg" },
+  { id: 5, label: "Redux", src: "/skills/redux.svg" },
+  { id: 6, label: "GitHub", src: "/skills/github-icon.svg" },
+  { id: 7, label: "Vite", src: "/skills/vite.svg" },
+  { id: 8, label: "Node.js", src: "/skills/nodejs.svg" },
+  { id: 9, label: "Supabase", src: "/skills/supabase.svg" },
+  { id: 10, label: "PostGreSQL", src: "/skills/postgresql.svg" },
+  { id: 11, label: "Three.js", src: "/skills/threejs.svg" },
+  { id: 12, label: "Framer Motion", src: "/skills/framer.svg" },
+  { id: 13, label: "Tailwind CSS", src: "/skills/tailwind.svg" },
+  { id: 14, label: "apexCharts", src: "/skills/apexCharts.svg" },
+];

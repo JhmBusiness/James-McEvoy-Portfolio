@@ -1,14 +1,10 @@
 "use client";
 
 import { useFrame } from "@react-three/fiber";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import * as THREE from "three";
 
-interface RigProps {
-  activeId: number | null;
-}
-
-export default function Rig({ activeId }: RigProps) {
+export default function Rig() {
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
@@ -26,7 +22,7 @@ export default function Rig({ activeId }: RigProps) {
 
   useFrame((state) => {
     const startZ = 8;
-    const endZ = -80;
+    const endZ = -140;
     const targetZ = startZ + scrollProgress * (endZ - startZ);
 
     // Smooth camera movement
