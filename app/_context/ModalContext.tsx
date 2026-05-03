@@ -10,6 +10,7 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import { projectData } from "../_lib/data";
+import { AnimatePresence, motion, useAnimation } from "framer-motion";
 
 export type ModalName =
   | "the-pond"
@@ -44,28 +45,92 @@ interface modalProviderProps {
 const ModalContext = createContext<modalContextType | undefined>(undefined);
 
 function ModalWrapper({ children, onClose }: ModalWrapperProps) {
-  return createPortal(
-    // Backdrop to stop all actions and to close modal and blur bg.
-    <div
-      className="fixed inset-0 w-full h-100dvh flex justify-center bg-[#1d1d1d14] backdrop-blur-xs z-50"
-      onClick={onClose}
-      onWheel={(e) => e.stopPropagation()}
-      aria-hidden="true"
-    >
-      {/* 2. The Modal Card */}
-      <div
-        className="bg-linear-to-bl from-[#212121] to-[#1d1d1d] max-w-341.5 w-4/5 my-20 can-scroll rounded-4xl min-h-[calc(100%-40px)]"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Close Button */}
-        {/* <button onClick={onClose} className=""></button> */}
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, [onClose]);
 
-        {/* Content Area */}
-        <div className="overflow-scroll px-40 mt-30 flex flex-col gap-100 justify-center text-center">
-          {children}
+  const windowHeight = window.innerHeight;
+
+  // const modalExit = useAnimation();
+  // const buttonExit = useAnimation();
+  // const backdropExit = useAnimation();
+
+  // // 2. The Manual Exit Function
+  // async function handleManualClose() {
+  //   // Run both animations in parallel and wait for them to finish
+  //   console.log("anim start!");
+  //   modalExit.start({
+  //     opacity: 0,
+  //     scale: 0.95,
+  //     y: 20,
+  //     transition: { duration: 0.2 },
+  //   });
+  //   buttonExit.start({
+  //     scale: 0,
+  //     opacity: 0,
+  //     transition: { duration: 0.2 },
+  //   });
+  //   backdropExit.start({
+  //     opacity: 0,
+  //   });
+  //   // 3. Now that the animation is done, tell the parent to dismount
+  //   // onClose();
+  // }
+
+  return createPortal(
+    // Backdrop
+    <>
+      <motion.div
+        className="fixed inset-0 w-full h-100dvh flex justify-center backdrop-blur-[2px] z-50"
+        onClick={onClose}
+        onWheel={(e) => e.stopPropagation()}
+        aria-hidden="true"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        {/* Modal Card */}
+        <div className="min-h-[calc(100%)] w-full overflow-scroll flex justify-center">
+          <motion.div
+            className="bg-linear-to-bl from-[#212121] to-[#1d1d1d] max-w-341.5 w-4/5 my-20 can-scroll rounded-4xl h-fit"
+            onClick={(e) => e.stopPropagation()}
+            initial={{ scale: 0.8, y: windowHeight }}
+            animate={{ scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: windowHeight }}
+            transition={{
+              duration: 0.8,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+          >
+            {/* Content Area */}
+            <div className="overflow-scroll px-40 mt-30 flex flex-col gap-100 justify-center text-center">
+              {children}
+            </div>
+          </motion.div>
         </div>
-      </div>
-    </div>,
+
+        <motion.button
+          onClick={onClose}
+          className="fixed top-10 right-10 cursor-pointer z-60 flex items-center justify-center w-10 h-10 rounded-full border border-light/10 bg-light/5 backdrop-blur-sm hover:border-light/40 duration-200 hover:scale-110 active:scale-95"
+          initial={{ scale: 0.4, opacity: 0 }}
+          animate={{ scale: [0.4, 1.2, 1], opacity: 1 }}
+          exit={{ scale: 0, opacity: 0 }}
+          transition={{
+            duration: 0.8,
+          }}
+        >
+          <div className="relative w-6 h-6">
+            <span className="absolute top-1/2 left-0 w-full h-0.5 bg-light rotate-45 rounded-full" />
+            <span className="absolute top-1/2 left-0 w-full h-0.5 bg-light -rotate-45 rounded-full" />
+          </div>
+        </motion.button>
+      </motion.div>
+    </>,
+
     document.body,
   );
 }
@@ -82,6 +147,7 @@ function ThePondModal() {
     firstImg,
     secondImg,
     thirdImg,
+    brandColor,
   } = projectData.filter((pro) => pro.id === 1)[0];
 
   return (
@@ -179,7 +245,7 @@ function ThePondModal() {
       </div>
 
       {/* What I've learnt */}
-      <div className="h-[calc(100dvh-40px)] flex justify-center items-center flex-col">
+      <div className="h-[calc(100dvh-80px)] flex justify-center items-center flex-col">
         <h3>WHAT I&apos;VE LEARNT:</h3>
         <p className="max-w-200 mx-auto mt-6 pb-10">
           This project pushed my development forward. I explored how a backend
@@ -308,7 +374,7 @@ function SmilingSoleReflexologyModal() {
       </div>
 
       {/* What I've learnt */}
-      <div className="h-[calc(100dvh-40px)] flex justify-center items-center flex-col">
+      <div className="h-[calc(100dvh-80px)] flex justify-center items-center flex-col">
         <h3>WHAT I&apos;VE LEARNT:</h3>
         <p className="max-w-200 mx-auto mt-6 pb-10">
           This was my first time creating a project that integrated the
@@ -408,7 +474,7 @@ function CobaltDevelopmentModal() {
       </div>
 
       {/* What I've learnt */}
-      <div className="h-[calc(100dvh-40px)] flex justify-center items-center flex-col">
+      <div className="h-[calc(100dvh-80px)] flex justify-center items-center flex-col">
         <h3>WHAT I&apos;VE LEARNT:</h3>
         <p className="max-w-200 mx-auto mt-6 pb-10">
           There is one main thing I learnt from this project, and that was
@@ -510,7 +576,7 @@ function CobaltConstructionModal() {
       </div>
 
       {/* What I've learnt */}
-      <div className="h-[calc(100dvh-40px)] flex justify-center items-center flex-col">
+      <div className="h-[calc(100dvh-80px)] flex justify-center items-center flex-col">
         <h3>WHAT I&apos;VE LEARNT:</h3>
         <p className="max-w-200 mx-auto mt-6 pb-10">
           This project was great for practising standard CSS. Aside from that,
@@ -591,7 +657,7 @@ function CobaltHubModal() {
       </div>
 
       {/* What I've learnt */}
-      <div className="h-[calc(100dvh-40px)] flex justify-center items-center flex-col">
+      <div className="h-[calc(100dvh-80px)] flex justify-center items-center flex-col">
         <h3>WHAT I&apos;VE LEARNT:</h3>
         <p className="max-w-200 mx-auto mt-6 pb-10">
           This project was great for practising standard CSS. Aside from that,
@@ -712,7 +778,7 @@ function CobaltAluminiumModal() {
       </div>
 
       {/* What I've learnt */}
-      <div className="h-[calc(100dvh-40px)] flex justify-center items-center flex-col">
+      <div className="h-[calc(100dvh-80px)] flex justify-center items-center flex-col">
         <h3>WHAT I&apos;VE LEARNT:</h3>
         <p className="max-w-200 mx-auto mt-6 pb-10">
           As this was my first project, there was a lot to learn. The one I like
@@ -780,11 +846,13 @@ function ModalProvider({ children }: modalProviderProps) {
   return (
     <ModalContext.Provider value={{ openModal, closeModal }}>
       {children}
-      {modalState.name && ModalComponent && (
-        <ModalWrapper onClose={closeModal}>
-          <ModalComponent {...modalState.props} />
-        </ModalWrapper>
-      )}
+      <AnimatePresence>
+        {modalState.name && ModalComponent && (
+          <ModalWrapper onClose={closeModal}>
+            <ModalComponent {...modalState.props} />
+          </ModalWrapper>
+        )}
+      </AnimatePresence>
     </ModalContext.Provider>
   );
 }
