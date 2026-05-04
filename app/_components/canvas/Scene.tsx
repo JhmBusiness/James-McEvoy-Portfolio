@@ -5,6 +5,7 @@ import { Suspense, useState } from "react";
 import HeroMesh from "./HeroMesh";
 import ProjectsContainer from "./ProjectsContainer";
 import Rig from "./Rig";
+import TerminalBackground from "./TerminalBackground";
 
 export default function Scene() {
   const [activeId, setActiveId] = useState<number | null>(null);
@@ -41,6 +42,8 @@ export default function Scene() {
         <Rig />
         <HeroMesh />
         <ProjectsContainer setActiveId={setActiveId} />
+
+        <TerminalBackground />
 
         <PerspectiveCamera makeDefault position={[0, 0, 8]} />
       </Suspense>

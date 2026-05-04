@@ -7,7 +7,7 @@ import { skillData } from "@/app/_lib/data";
 export default function Form() {
   const { scrollYProgress, scrollY } = useScroll();
 
-  const opacity = useTransform(scrollYProgress, [0.85, 0.95, 1], [0, 1, 1]);
+  const opacity = useTransform(scrollYProgress, [0.85, 1], [0, 1]);
   const scale = useTransform(
     scrollYProgress,
     [0, 0.85, 0.95, 1],
@@ -17,9 +17,9 @@ export default function Form() {
   return (
     <motion.section
       style={{ opacity, scale }}
-      className="fixed inset-0 z-10 flex flex-col items-center justify-center px-6 text-center"
+      className="fixed inset-0 z-10 w-4/5 h-4/5 bg-[#0a0a0a]/80 justify-center text-center m-auto"
     >
-      <div className="max-w-3xl">
+      <div className="">
         <motion.h1>Contact Form</motion.h1>
       </div>
     </motion.section>
