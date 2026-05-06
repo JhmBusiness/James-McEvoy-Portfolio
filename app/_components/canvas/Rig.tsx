@@ -33,16 +33,30 @@ export default function Rig() {
     );
 
     // Mouse parallax
-    state.camera.position.x = THREE.MathUtils.lerp(
-      state.camera.position.x,
-      state.pointer.x * 1.5,
-      0.05,
-    );
-    state.camera.position.y = THREE.MathUtils.lerp(
-      state.camera.position.y,
-      state.pointer.y * 1.5,
-      0.05,
-    );
+    if (scrollProgress !== 1) {
+      state.camera.position.x = THREE.MathUtils.lerp(
+        state.camera.position.x,
+        state.pointer.x * 1.5,
+        0.05,
+      );
+      state.camera.position.y = THREE.MathUtils.lerp(
+        state.camera.position.y,
+        state.pointer.y * 1.5,
+        0.05,
+      );
+    } else {
+      state.camera.position.x = THREE.MathUtils.lerp(
+        state.camera.position.x,
+        0,
+        0.16,
+      );
+
+      state.camera.position.y = THREE.MathUtils.lerp(
+        state.camera.position.y,
+        0,
+        0.16,
+      );
+    }
   });
 
   return null;

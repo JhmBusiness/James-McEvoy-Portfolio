@@ -141,3 +141,39 @@ export const skillData: SkillDataProps[] = [
   { id: 13, label: "Tailwind CSS", src: "/skills/tailwind.svg" },
   { id: 14, label: "apexCharts", src: "/skills/apexCharts.svg" },
 ];
+
+export interface LoadingScreenDataProps {
+  id: number;
+  label: string;
+}
+
+export const loadingScreenData: LoadingScreenDataProps[] = [
+  { id: 1, label: "CONNECTING TO STATION_JMCE" },
+  { id: 2, label: "CONNECTION ESTABLISHED" },
+  { id: 3, label: "INITIALIZING UI_LAYER" },
+  { id: 4, label: "INITIALIZING CHAT_BOT" },
+  { id: 5, label: "SYSTEM_READY" },
+];
+
+export interface ChatBotScriptProps {
+  id: number;
+  label: string;
+  secondLabel?: string;
+}
+
+export const chatBotScript: ChatBotScriptProps[] = [
+  { id: 1, label: "OH... YOU’RE NOT JAMES........" },
+  { id: 2, label: "WHAT'S YOUR NAME?" },
+  { id: 3, label: "HI " + " , IT'S NICE TO MEET YOU (/≧▽≦)/" },
+  { id: 4, label: "I'M J-MCE.BOT, JAMES' PERSONAL MESSENGER" },
+  { id: 5, label: "WHAT WOULD YOU LIKE ME TO TELL JAMES?" },
+  {
+    id: 6,
+    label: "HOW CAN HE GET IN TOUCH WITH YOU?",
+    secondLabel: "EMAIL OR PHONE NUMBER",
+  },
+  { id: 7, label: "SHOULD I SEND YOUR MESSAGE?" },
+  { id: 8, label: "SENDING... ANYTIME TODAY........ *DING*" },
+  { id: 9, label: "THANK YOU FOR GETTING IN TOUCH!" },
+  { id: 10, label: "（づ￣3￣）づ╭❤️～" },
+];

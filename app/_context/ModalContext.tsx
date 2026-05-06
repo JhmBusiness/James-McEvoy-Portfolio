@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import {
   createContext,
@@ -9,9 +10,8 @@ import {
   useState,
 } from "react";
 import { createPortal } from "react-dom";
-import { projectData } from "../_lib/data";
-import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import TechnologyStackIcons from "../_components/projects/TechnologyStackIcons";
+import { projectData } from "../_lib/data";
 
 export type ModalName =
   | "the-pond"
@@ -55,32 +55,6 @@ function ModalWrapper({ children, onClose }: ModalWrapperProps) {
   }, [onClose]);
 
   const windowHeight = window.innerHeight;
-
-  // const modalExit = useAnimation();
-  // const buttonExit = useAnimation();
-  // const backdropExit = useAnimation();
-
-  // // 2. The Manual Exit Function
-  // async function handleManualClose() {
-  //   // Run both animations in parallel and wait for them to finish
-  //   console.log("anim start!");
-  //   modalExit.start({
-  //     opacity: 0,
-  //     scale: 0.95,
-  //     y: 20,
-  //     transition: { duration: 0.2 },
-  //   });
-  //   buttonExit.start({
-  //     scale: 0,
-  //     opacity: 0,
-  //     transition: { duration: 0.2 },
-  //   });
-  //   backdropExit.start({
-  //     opacity: 0,
-  //   });
-  //   // 3. Now that the animation is done, tell the parent to dismount
-  //   // onClose();
-  // }
 
   return createPortal(
     // Backdrop

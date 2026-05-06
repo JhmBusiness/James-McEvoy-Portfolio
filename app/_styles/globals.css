@@ -8,6 +8,7 @@
   --color-light: #fafafa;
   --color-dark: #010101;
   --color-grey: #99a1af;
+  --color-accent: #26cefd;
 }
 
 @layer base {
