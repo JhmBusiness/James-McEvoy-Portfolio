@@ -130,6 +130,14 @@ function ThePondModal() {
       {/* Title area */}
       <div>
         <h2>{title}</h2>
+        <Link
+          href={liveUrl}
+          aria-label="A button to the actual projects live site."
+          target="__blank"
+          className="text-xl text-grey hover:text-accent duration-200"
+        >
+          [ LIVE SITE ]
+        </Link>
         <img
           src={heroImg}
           alt="The applications homepage shown on mobile, tablet, and desktop."
@@ -262,6 +270,14 @@ function SmilingSoleReflexologyModal() {
       {/* Title area */}
       <div>
         <h2>{title}</h2>
+        <Link
+          href={liveUrl}
+          aria-label="A button to the actual projects live site."
+          target="__blank"
+          className="text-xl text-grey hover:text-accent duration-200"
+        >
+          [ LIVE SITE ]
+        </Link>
         <img
           src={heroImg}
           alt="The applications homepage shown on mobile, tablet, and desktop."
@@ -385,6 +401,14 @@ function CobaltDevelopmentModal() {
       {/* Title area */}
       <div>
         <h2>{title}</h2>
+        <Link
+          href={liveUrl}
+          aria-label="A button to the actual projects live site."
+          target="__blank"
+          className="text-xl text-grey hover:text-accent duration-200"
+        >
+          [ LIVE SITE ]
+        </Link>
         <img
           src={heroImg}
           alt="The applications homepage shown on mobile, tablet, and desktop."
@@ -484,6 +508,14 @@ function CobaltConstructionModal() {
       {/* Title area */}
       <div>
         <h2>{title}</h2>
+        <Link
+          href={liveUrl}
+          aria-label="A button to the actual projects live site."
+          target="__blank"
+          className="text-xl text-grey hover:text-accent duration-200"
+        >
+          [ LIVE SITE ]
+        </Link>
         <img
           src={heroImg}
           alt="The applications homepage shown on mobile, tablet, and desktop."
@@ -581,6 +613,14 @@ function CobaltHubModal() {
       {/* Title area */}
       <div>
         <h2>{title}</h2>
+        <Link
+          href={liveUrl}
+          aria-label="A button to the actual projects live site."
+          target="__blank"
+          className="text-xl text-grey hover:text-accent duration-200"
+        >
+          [ LIVE SITE ]
+        </Link>
         <img
           src={heroImg}
           alt="The applications homepage shown on mobile, tablet, and desktop."
@@ -660,6 +700,14 @@ function CobaltAluminiumModal() {
       {/* Title area */}
       <div>
         <h2>{title}</h2>
+        <Link
+          href={liveUrl}
+          aria-label="A button to the actual projects live site."
+          target="__blank"
+          className="text-xl text-grey hover:text-accent duration-200"
+        >
+          [ LIVE SITE ]
+        </Link>
         <img
           src={heroImg}
           alt="The applications homepage shown on mobile, tablet, and desktop."

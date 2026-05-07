@@ -35,21 +35,19 @@ export default function Terminal() {
 
   // Lock user scroll while loading animation plays
   useEffect(() => {
-    if (!loadingStageComplete && isPlaying) {
-      // Prevent scrolling
-      document.body.style.overflow = "hidden";
-      document.body.style.height = "100vh";
-    } else {
-      // Restore scrolling
-      document.body.style.overflow = "unset";
-      document.body.style.height = "unset";
-    }
-
-    // Cleanup: Ensure scroll is unlocked if the user leaves the page
-    return () => {
+    const unlockScroll = () => {
       document.body.style.overflow = "unset";
       document.body.style.height = "unset";
     };
+
+    if (!loadingStageComplete && isPlaying) {
+      document.body.style.overflow = "hidden";
+      document.body.style.height = "100vh";
+    } else {
+      unlockScroll();
+    }
+
+    return unlockScroll;
   }, [loadingStageComplete, isPlaying]);
 
   gsap.registerPlugin(useGSAP, TextPlugin, ScrambleTextPlugin);
@@ -57,7 +55,7 @@ export default function Terminal() {
   const loadingBar = useRef(null);
   const textRef = useRef(null);
   const chatBotRef = useRef(null);
-  const screenRef = useRef(null);
+  const terminalRef = useRef(null);
 
   // Loading animations
   useGSAP(
@@ -154,6 +152,9 @@ export default function Terminal() {
             ease: "cubic-bezier(0.65, 0, 0.35, 1)",
             onComplete: () => setLoadingStageComplete(true),
           });
+        return () => {
+          tl.kill();
+        };
       }
     },
     { scope: loadingScreen, dependencies: [scrollProgress] },
@@ -220,7 +221,7 @@ export default function Terminal() {
                 duration: 1.6,
                 text: chatBotScript[5].label,
                 ease: "none",
-                onEnd: () => {
+                onComplete: () => {
                   setChatBotStage(3);
                 },
               });
@@ -261,64 +262,30 @@ export default function Terminal() {
               duration: 1.6,
               text: chatBotScript[8].label,
               ease: "none",
-            })
-              .to(chatBotRef.current, {
-                delay: 1,
-                duration: 1.6,
-                text: chatBotScript[9].label,
-                ease: "none",
-              })
-              .to(chatBotRef.current, {
-                delay: 1,
-                duration: 0.8,
-                text: chatBotScript[10].label,
-                ease: "none",
-              });
-          }
-
-          if (chatBotStage === 7) {
-            tl.to(chatBotRef.current, {
-              delay: 1,
-              duration: 1.6,
-              text: chatBotScript[9].label,
-              ease: "none",
             }).to(chatBotRef.current, {
               delay: 1,
+              duration: 0.8,
+              text: chatBotScript[9].label,
+              ease: "none",
+            });
+          }
+
+          // N text
+          if (chatBotStage === 10) {
+            tl.to(chatBotRef.current, {
               duration: 1.6,
               text: chatBotScript[10].label,
               ease: "none",
             });
           }
-
-          if (chatBotStage === 999) {
-            gsap.set(screenRef.current, { transformOrigin: "50% 50%" });
-
-            tl.to(chatBotRef.current, {
-              delay: 1,
-              duration: 1.6,
-              text: chatBotScript[11].label,
-              ease: "none",
-            });
-
-            tl.to(chatBotRef.current, {
-              delay: 0.5,
-              duration: 0.4,
-              scaleY: 0.005, // Collapse to a thin horizontal line
-              scaleX: 1.1, // Slight horizontal stretch as it flattens
-              filter: "brightness(5) contrast(2)", // Bright phosphor flash
-              ease: "expo.inOut",
-            }).to(chatBotRef.current, {
-              duration: 0.3,
-              scaleX: 0, // Collapse the line into a single point
-              opacity: 0,
-              ease: "power4.in",
-            });
-          }
         }
+        return () => {
+          tl.kill();
+        };
       }
     },
     {
-      scope: loadingScreen,
+      scope: terminalRef,
       dependencies: [loadingStageComplete, scrollProgress, chatBotStage],
     },
   );
@@ -328,7 +295,7 @@ export default function Terminal() {
       <AnimatePresence>
         {scrollProgress === 1 && (
           <motion.section
-            ref={screenRef}
+            ref={terminalRef}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}

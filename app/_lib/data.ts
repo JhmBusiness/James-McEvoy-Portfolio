@@ -174,8 +174,11 @@ export const chatBotScript: ChatBotScriptProps[] = [
     secondLabel: "EMAIL OR PHONE NUMBER",
   },
   { id: 7, label: "SHOULD I SEND YOUR MESSAGE?" },
-  { id: 8, label: "SENDING... ANYTIME TODAY........ *DING*" },
-  { id: 9, label: "THANK YOU FOR GETTING IN TOUCH!" },
-  { id: 10, label: "（づ￣3￣）づ╭❤️～" },
-  { id: 11, label: "GOOD BYE (oﾟ_ﾟ)ノ" },
+  { id: 8, label: "THANK YOU FOR GETTING IN TOUCH!" },
+  { id: 9, label: "（づ￣3￣）づ╭❤️～" },
+  { id: 10, label: "WHAT WOULD YOU LIKE TO CHANGE?" },
 ];
+
+export const SERVICEID = "service_rfuyf8j";
+export const TEMPLATEID = "template_a0hgqf8";
+export const PUBLICKEY = "lTkc31QPLPhpzzuGE";

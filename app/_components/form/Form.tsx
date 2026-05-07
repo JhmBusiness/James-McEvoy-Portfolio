@@ -2,6 +2,9 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
+import { PUBLICKEY, SERVICEID, TEMPLATEID } from "@/app/_lib/data";
 
 interface FormProps {
   children: React.ReactNode;
@@ -28,7 +31,7 @@ export default function Form({
   const nameInputWidth = Math.max(200, userNameInput.length * 14);
   const emailInputWidth = Math.max(200, userEmailInput.length * 14);
   const messageInputWidth = Math.max(200, userMessageInput.length * 14);
-  const yesOrNoInputWidth = Math.max(200, userMessageInput.length * 14);
+  const yesOrNoInputWidth = Math.max(200, yesOrNoInput.length * 14);
 
   gsap.registerPlugin(useGSAP);
 
@@ -45,10 +48,22 @@ export default function Form({
       message: "",
     },
   });
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
-    setChatBotStage(7);
-    reset();
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    try {
+      await emailjs.send(
+        SERVICEID,
+        TEMPLATEID,
+        {
+          name: data.name,
+          email: data.email,
+          message: data.message,
+        },
+        PUBLICKEY,
+      );
+      reset();
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+    }
   };
 
   const { onChange: nameOnChange, ...nameRegister } = register("name");
@@ -75,41 +90,41 @@ export default function Form({
     };
   }, [isDirty]);
 
-  function handleAbort() {
-    reset();
-    console.log("resetting");
-    setChatBotStage(999);
-  }
-
   return (
     // I haven't used required as we will check if the field is dirty before the submit/next btn is clickable.
     <div className="h-full">
       {children}
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={(e) => e.preventDefault()}
         className="flex flex-col gap-6 pointer-events-auto items-center justify-end h-full p-20 w-full"
       >
         {/* Name input */}
         {chatBotStage === 1 && (
           <>
-            <input
-              autoFocus
-              id="name"
-              style={{ width: `${nameInputWidth}px` }}
-              className="absolute mb-10 border-b border-accent"
-              value={userNameInput}
-              {...nameRegister}
-              onChange={(e) => {
-                nameOnChange(e);
-                setUserNameInput(e.target.value);
-              }}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" && userNameInput.length > 0) {
-                  e.preventDefault();
-                  setChatBotStage((prev) => prev + 1);
-                }
-              }}
-            />
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              className="absolute mb-10 border-b border-accent max-w-full overflow-scroll"
+            >
+              <input
+                autoFocus
+                id="name"
+                style={{ width: `${nameInputWidth}px` }}
+                value={userNameInput}
+                {...nameRegister}
+                onChange={(e) => {
+                  nameOnChange(e);
+                  setUserNameInput(e.target.value);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && userNameInput.length > 0) {
+                    e.preventDefault();
+                    setChatBotStage((prev) => prev + 1);
+                  }
+                }}
+              />
+            </motion.div>
           </>
         )}
 
@@ -122,24 +137,30 @@ export default function Form({
         {/* Message input */}
         {chatBotStage === 3 && (
           <>
-            <input
-              autoFocus
-              id="message"
-              style={{ width: `${messageInputWidth}px` }}
-              className="absolute mb-10 border-b border-accent"
-              value={userMessageInput}
-              {...messageRegister}
-              onChange={(e) => {
-                messageOnChange(e);
-                setUserMessageInput(e.target.value);
-              }}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" && userMessageInput.length > 0) {
-                  e.preventDefault();
-                  setChatBotStage((prev) => prev + 1);
-                }
-              }}
-            />
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              className="absolute mb-10 border-b border-accent max-w-full overflow-scroll"
+            >
+              <input
+                autoFocus
+                id="message"
+                style={{ width: `${messageInputWidth}px` }}
+                value={userMessageInput}
+                {...messageRegister}
+                onChange={(e) => {
+                  messageOnChange(e);
+                  setUserMessageInput(e.target.value);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && userMessageInput.length > 0) {
+                    e.preventDefault();
+                    setChatBotStage((prev) => prev + 1);
+                  }
+                }}
+              />
+            </motion.div>
           </>
         )}
 
@@ -154,25 +175,31 @@ export default function Form({
         {/* Email inputs */}
         {chatBotStage === 4 && (
           <>
-            <input
-              autoFocus
-              id="email"
-              style={{ width: `${emailInputWidth}px` }}
-              className="absolute mb-10 px-4 border-b border-accent"
-              {...emailRegister}
-              value={userEmailInput}
-              placeholder="Email / Phone"
-              onChange={(e) => {
-                setUserEmailInput(e.target.value);
-                emailOnChange(e);
-              }}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" && userEmailInput.length > 0) {
-                  e.preventDefault();
-                  setChatBotStage((prev) => prev + 1);
-                }
-              }}
-            />
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 2.6 }}
+              className="absolute mb-10 border-b border-accent max-w-full overflow-scroll"
+            >
+              <input
+                autoFocus
+                id="email"
+                style={{ width: `${emailInputWidth}px` }}
+                {...emailRegister}
+                value={userEmailInput}
+                placeholder="Email / Phone"
+                onChange={(e) => {
+                  setUserEmailInput(e.target.value);
+                  emailOnChange(e);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && userEmailInput.length > 0) {
+                    e.preventDefault();
+                    setChatBotStage((prev) => prev + 1);
+                  }
+                }}
+              />
+            </motion.div>
           </>
         )}
 
@@ -184,28 +211,35 @@ export default function Form({
             </p>
           )}
 
+        {/* Y or N */}
         {chatBotStage === 5 && (
           <>
-            <input
-              autoFocus
-              id="yesOrNo"
-              style={{ width: `${yesOrNoInputWidth}px` }}
-              className="absolute mb-10 px-4 border-b border-accent"
-              value={yesOrNoInput}
-              placeholder="Y / N"
-              onChange={(e) => setYesOrNoInput(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" && userEmailInput.length > 0) {
-                  e.preventDefault();
-                  if (yesOrNoInput.toUpperCase() === "Y") {
-                    handleSubmit(onSubmit)();
-                    setChatBotStage((prev) => prev + 1);
-                  } else {
-                    handleAbort();
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 2.6 }}
+              className="absolute mb-10 border-b border-accent max-w-full overflow-scroll"
+            >
+              <input
+                autoFocus
+                id="yesOrNo"
+                style={{ width: `${yesOrNoInputWidth}px` }}
+                value={yesOrNoInput}
+                placeholder="Y / N"
+                onChange={(e) => setYesOrNoInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && userEmailInput.length > 0) {
+                    e.preventDefault();
+                    if (yesOrNoInput.toUpperCase() === "Y") {
+                      handleSubmit(onSubmit)();
+                      setChatBotStage((prev) => prev + 1);
+                    } else if (yesOrNoInput.toUpperCase() === "N") {
+                      setChatBotStage(10);
+                    }
                   }
-                }
-              }}
-            />
+                }}
+              />
+            </motion.div>
           </>
         )}
 
@@ -219,6 +253,35 @@ export default function Form({
               [PRESS ENTER TO COMMIT]
             </p>
           )}
+
+        {/* Edit screen */}
+        {chatBotStage === 10 && (
+          <div className="absolute inset-0 flex flex-col mt-50 gap-4 text-left font-mono items-center justify-center max-w-4/5 mx-auto overflow-hidden">
+            <p className="animate-pulse text-sm text-grey pointer-events-none">
+              [ CLICK A LINE TO EDIT DATA ]
+            </p>
+            <button
+              onClick={() => setChatBotStage(1)}
+              className="hover:text-accent duration-200 cursor-pointer px-20"
+            >
+              1. NAME: <span className="text-grey">{userNameInput}</span>
+            </button>
+
+            <button
+              onClick={() => setChatBotStage(3)}
+              className="hover:text-accent duration-200 cursor-pointer px-20"
+            >
+              2. MESSAGE: <span className="text-grey">{userMessageInput}</span>
+            </button>
+
+            <button
+              onClick={() => setChatBotStage(4)}
+              className="hover:text-accent duration-200 cursor-pointer px-20"
+            >
+              3. CONTACT: <span className="text-grey">{userEmailInput}</span>
+            </button>
+          </div>
+        )}
       </form>
     </div>
   );
