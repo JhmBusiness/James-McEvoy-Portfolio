@@ -162,10 +162,10 @@ export interface ChatBotScriptProps {
 }
 
 export const chatBotScript: ChatBotScriptProps[] = [
-  { id: 0, label: "WAHT TOOK YOU SO..." },
-  { id: 1, label: "OH... YOU’RE NOT JAMES........" },
+  { id: 0, label: "WHAT TOOK YOU S..." },
+  { id: 1, label: "OH, YOU’RE NOT JAMES..." },
   { id: 2, label: "WHAT'S YOUR NAME?" },
-  { id: 3, label: "HI " + " , IT'S NICE TO MEET YOU (/≧▽≦)/" },
+  { id: 3, label: "IT'S NICE TO MEET YOU (/≧▽≦)/" },
   { id: 4, label: "I'M J-MCE.BOT, JAMES' PERSONAL MESSENGER" },
   { id: 5, label: "WHAT WOULD YOU LIKE ME TO TELL JAMES?" },
   {
@@ -177,4 +177,5 @@ export const chatBotScript: ChatBotScriptProps[] = [
   { id: 8, label: "SENDING... ANYTIME TODAY........ *DING*" },
   { id: 9, label: "THANK YOU FOR GETTING IN TOUCH!" },
   { id: 10, label: "（づ￣3￣）づ╭❤️～" },
+  { id: 11, label: "GOOD BYE (oﾟ_ﾟ)ノ" },
 ];

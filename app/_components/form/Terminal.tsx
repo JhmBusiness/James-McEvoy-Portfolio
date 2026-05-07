@@ -6,13 +6,16 @@ import { AnimatePresence, motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrambleTextPlugin, TextPlugin } from "gsap/all";
 import { useEffect, useRef, useState } from "react";
+import Form from "./Form";
 
 export default function Terminal() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [loadBarPercent, setLoadBarPercent] = useState(0);
   const [loadingStageComplete, setLoadingStageComplete] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [chatBotStage, setChatBotStage] = useState(0);
 
+  // Handles scrollProgress
   useEffect(() => {
     const handleScroll = () => {
       // Calculate how far we've scrolled (0 to 1)
@@ -30,7 +33,7 @@ export default function Terminal() {
     };
   }, []);
 
-  // Lock user scroll while opening animation plays
+  // Lock user scroll while loading animation plays
   useEffect(() => {
     if (!loadingStageComplete && isPlaying) {
       // Prevent scrolling
@@ -54,7 +57,9 @@ export default function Terminal() {
   const loadingBar = useRef(null);
   const textRef = useRef(null);
   const chatBotRef = useRef(null);
+  const screenRef = useRef(null);
 
+  // Loading animations
   useGSAP(
     () => {
       // Only run if the progress is 1 AND the element exists
@@ -154,15 +159,180 @@ export default function Terminal() {
     { scope: loadingScreen, dependencies: [scrollProgress] },
   );
 
+  // Chatbot animations
+  useGSAP(
+    () => {
+      if (loadingStageComplete && chatBotRef.current) {
+        const currentContent = chatBotScript[chatBotStage];
+        const tl = gsap.timeline();
+
+        // Opening line of Oh you're not...
+        if (currentContent) {
+          if (chatBotStage === 0) {
+            tl.to(chatBotRef.current, {
+              delay: 1,
+              duration: 1.6,
+              text: chatBotScript[0].label,
+              ease: "none",
+            })
+              .to(chatBotRef.current, {
+                delay: 2,
+                duration: 1.6,
+                text: chatBotScript[1].label,
+                ease: "none",
+              })
+              // What's your name
+              .to(chatBotRef.current, {
+                delay: 1,
+                duration: 1.2,
+                text: chatBotScript[2].label,
+                ease: "none",
+                onComplete: () => setChatBotStage(1),
+              });
+          }
+
+          // Stuck on What's your name
+          if (chatBotStage === 1) {
+            tl.to(chatBotRef.current, {
+              delay: 1,
+              duration: 1.2,
+              text: chatBotScript[2].label,
+              ease: "none",
+            });
+          }
+
+          // Beginning of hello, I am bot
+          if (chatBotStage === 2) {
+            tl.to(chatBotRef.current, {
+              delay: 1,
+              duration: 1.6,
+              text: chatBotScript[3].label,
+              ease: "none",
+            })
+              .to(chatBotRef.current, {
+                delay: 1.6,
+                duration: 1.6,
+                text: chatBotScript[4].label,
+                ease: "none",
+              })
+              .to(chatBotRef.current, {
+                delay: 1.6,
+                duration: 1.6,
+                text: chatBotScript[5].label,
+                ease: "none",
+                onEnd: () => {
+                  setChatBotStage(3);
+                },
+              });
+          }
+          // Stuck on what's your message
+          if (chatBotStage === 3) {
+            tl.to(chatBotRef.current, {
+              delay: 1,
+              duration: 1.6,
+              text: chatBotScript[5].label,
+              ease: "none",
+            });
+          }
+          // How can contact?
+          if (chatBotStage === 4) {
+            tl.to(chatBotRef.current, {
+              delay: 1,
+              duration: 1.6,
+              text: chatBotScript[6].label,
+              ease: "none",
+            });
+          }
+
+          // Would you like to send message?
+          if (chatBotStage === 5) {
+            tl.to(chatBotRef.current, {
+              delay: 1,
+              duration: 1.6,
+              text: chatBotScript[7].label,
+              ease: "none",
+            });
+          }
+
+          // Sending message
+          if (chatBotStage === 6) {
+            tl.to(chatBotRef.current, {
+              delay: 1,
+              duration: 1.6,
+              text: chatBotScript[8].label,
+              ease: "none",
+            })
+              .to(chatBotRef.current, {
+                delay: 1,
+                duration: 1.6,
+                text: chatBotScript[9].label,
+                ease: "none",
+              })
+              .to(chatBotRef.current, {
+                delay: 1,
+                duration: 0.8,
+                text: chatBotScript[10].label,
+                ease: "none",
+              });
+          }
+
+          if (chatBotStage === 7) {
+            tl.to(chatBotRef.current, {
+              delay: 1,
+              duration: 1.6,
+              text: chatBotScript[9].label,
+              ease: "none",
+            }).to(chatBotRef.current, {
+              delay: 1,
+              duration: 1.6,
+              text: chatBotScript[10].label,
+              ease: "none",
+            });
+          }
+
+          if (chatBotStage === 999) {
+            gsap.set(screenRef.current, { transformOrigin: "50% 50%" });
+
+            tl.to(chatBotRef.current, {
+              delay: 1,
+              duration: 1.6,
+              text: chatBotScript[11].label,
+              ease: "none",
+            });
+
+            tl.to(chatBotRef.current, {
+              delay: 0.5,
+              duration: 0.4,
+              scaleY: 0.005, // Collapse to a thin horizontal line
+              scaleX: 1.1, // Slight horizontal stretch as it flattens
+              filter: "brightness(5) contrast(2)", // Bright phosphor flash
+              ease: "expo.inOut",
+            }).to(chatBotRef.current, {
+              duration: 0.3,
+              scaleX: 0, // Collapse the line into a single point
+              opacity: 0,
+              ease: "power4.in",
+            });
+          }
+        }
+      }
+    },
+    {
+      scope: loadingScreen,
+      dependencies: [loadingStageComplete, scrollProgress, chatBotStage],
+    },
+  );
+
   return (
     <>
       <AnimatePresence>
         {scrollProgress === 1 && (
           <motion.section
+            ref={screenRef}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
-            className="fixed inset-0 z-10 w-4/5 h-4/5 flex justify-center items-center text-center m-auto"
+            className="fixed inset-0 flex justify-center items-center z-10 w-4/5 h-4/5 text-center m-auto"
           >
             {loadingStageComplete === false && (
               <div ref={loadingScreen}>
@@ -182,13 +352,15 @@ export default function Terminal() {
               </div>
             )}
             {loadingStageComplete === true && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="terminal-text-area"
+              <Form
+                chatBotStage={chatBotStage}
+                setChatBotStage={setChatBotStage}
               >
-                <h4 ref={chatBotRef}></h4>
-              </motion.div>
+                <h4
+                  className="absolute inset-0 flex justify-center items-center"
+                  ref={chatBotRef}
+                ></h4>
+              </Form>
             )}
           </motion.section>
         )}
