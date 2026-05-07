@@ -162,6 +162,7 @@ export interface ChatBotScriptProps {
 }
 
 export const chatBotScript: ChatBotScriptProps[] = [
+  { id: 0, label: "WAHT TOOK YOU SO..." },
   { id: 1, label: "OH... YOU’RE NOT JAMES........" },
   { id: 2, label: "WHAT'S YOUR NAME?" },
   { id: 3, label: "HI " + " , IT'S NICE TO MEET YOU (/≧▽≦)/" },
