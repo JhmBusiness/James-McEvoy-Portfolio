@@ -6,9 +6,13 @@ import HeroMesh from "./HeroMesh";
 import ProjectsContainer from "./ProjectsContainer";
 import Rig from "./Rig";
 import TerminalBackground from "./TerminalBackground";
+import { useMediaQuery } from "usehooks-ts";
 
 export default function Scene() {
   const [activeId, setActiveId] = useState<number | null>(null);
+  const isMobile = useMediaQuery("(max-width: 1024px)");
+  const [currentSection, setCurrentSection] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   return (
     <Canvas
@@ -30,18 +34,29 @@ export default function Scene() {
 
         {/* The Deep Space Background */}
         <Stars
-          radius={100}
+          radius={isMobile ? 80 : 100}
           depth={50}
-          count={5000}
+          count={isMobile ? 1200 : 5000}
           factor={4}
           saturation={1}
           fade
           speed={1}
         />
 
-        <Rig />
-        <HeroMesh />
-        <ProjectsContainer setActiveId={setActiveId} />
+        <Rig
+          isMobile={isMobile}
+          currentSection={currentSection}
+          setCurrentSection={setCurrentSection}
+          scrollProgress={scrollProgress}
+          setScrollProgress={setScrollProgress}
+        />
+        <HeroMesh isMobile={isMobile} />
+        <ProjectsContainer
+          setActiveId={setActiveId}
+          isMobile={isMobile}
+          scrollProgress={scrollProgress}
+          setScrollProgress={setScrollProgress}
+        />
 
         <TerminalBackground />
 

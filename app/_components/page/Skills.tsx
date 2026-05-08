@@ -21,7 +21,7 @@ export default function Skills() {
   return (
     <motion.section
       style={{ opacity, scale, y }}
-      className="fixed inset-0 z-10 flex flex-col items-center justify-center px-6 text-center"
+      className="fixed inset-0 z-10 flex flex-col items-center justify-center px-6 text-center pointer-events-none"
     >
       <div className="max-w-3xl">
         <motion.h1>Skills</motion.h1>

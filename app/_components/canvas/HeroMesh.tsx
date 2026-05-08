@@ -1,11 +1,12 @@
 "use client";
 
+import { IsMobile } from "@/app/_lib/interfaces";
 import { Float } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
 
-export default function HeroMesh() {
+export default function HeroMesh({ isMobile }: IsMobile) {
   const meshRef = useRef<THREE.Mesh>(null!);
   const materialRef = useRef<THREE.MeshStandardMaterial>(null!);
 
@@ -22,7 +23,7 @@ export default function HeroMesh() {
   return (
     <Float speed={1.5} rotationIntensity={0.5} floatIntensity={1}>
       <mesh ref={meshRef}>
-        <icosahedronGeometry args={[2, 0]} />
+        <icosahedronGeometry args={isMobile ? [1.6, 0] : [2, 0]} />
         <meshStandardMaterial
           ref={materialRef}
           wireframe

@@ -299,7 +299,7 @@ export default function Terminal() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
-            className="fixed inset-0 flex justify-center items-center z-10 w-4/5 h-4/5 text-center m-auto"
+            className="fixed inset-0 flex justify-center items-center z-10 w-4/5 h-4/5 text-center m-auto pointer-events-none"
           >
             {loadingStageComplete === false && (
               <div ref={loadingScreen}>

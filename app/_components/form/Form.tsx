@@ -96,7 +96,7 @@ export default function Form({
       {children}
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="flex flex-col gap-6 pointer-events-auto items-center justify-end h-full p-20 w-full"
+        className="flex flex-col gap-6 items-center justify-end h-full p-20 w-full"
       >
         {/* Name input */}
         {chatBotStage === 1 && (

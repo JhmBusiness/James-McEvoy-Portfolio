@@ -23,8 +23,11 @@ export default function Hero() {
     >
       <div className="z-20 text-center pointer-events-none">
         <h1 className="pointer-events-none">JAMES MCEVOY</h1>
-        <p className="mt-4 pointer-events-none text-grey">
+        <p className="hidden lg:block mt-4 pointer-events-none text-grey">
           Scroll to start exploring.
+        </p>
+        <p className="lg:hidden mt-4 pointer-events-none text-grey">
+          Swipe up and down to explore.
         </p>
       </div>
     </motion.section>

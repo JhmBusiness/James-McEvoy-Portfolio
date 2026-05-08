@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import "./_styles/globals.css";
-import Scene from "./_components/canvas/Scene";
 import { Montserrat, Source_Sans_3 } from "next/font/google";
+import Scene from "./_components/canvas/Scene";
 import { ModalProvider } from "./_context/ModalContext";
+import "./_styles/globals.css";
 
 export const metadata: Metadata = {
   title: "James McEvoy's Portfolio",

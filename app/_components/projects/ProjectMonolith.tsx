@@ -2,12 +2,22 @@ import { ModalName } from "@/app/_context/ModalContext";
 import { ProjectMonolithDataProps } from "@/app/_lib/data";
 import { Edges, Text } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import * as THREE from "three";
 
 interface ProjectMonolithProps extends ProjectMonolithDataProps {
   position: [number, number, number];
   handleProjectClick: (id: number | null, modalName: ModalName) => void;
+  isMobile: boolean;
+  scrollProgress: number;
+  setScrollProgress: Dispatch<SetStateAction<number>>;
 }
 
 // Note: Monolith spinning is calibrated for Rig.tsx const startZ = 8; & const endZ = -80;
@@ -20,9 +30,12 @@ export default function ProjectMonolith({
   modalName,
   handleProjectClick,
   brandColor,
+  isMobile,
+  scrollProgress,
+  setScrollProgress,
 }: ProjectMonolithProps) {
   const groupRef = useRef<THREE.Group>(null!);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  // const [scrollProgress, setScrollProgress] = useState(0);
   const [hovered, setHovered] = useState(false);
 
   const localMouse = useRef(new THREE.Vector2(0, 0));
@@ -33,18 +46,6 @@ export default function ProjectMonolith({
       document.body.style.cursor = "auto";
     };
   }, [hovered]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const totalHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (window.scrollY / totalHeight) * 2.4;
-      setScrollProgress(progress);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const moveDir = useMemo(() => {
     switch (id) {
@@ -66,7 +67,9 @@ export default function ProjectMonolith({
   }, [id]);
 
   useFrame((state) => {
-    const scatterStrength = Math.max(0.64 - scrollProgress, 0);
+    const scatterStrength = isMobile
+      ? Math.max(0.58 - scrollProgress * 2.4, 0)
+      : Math.max(0.64 - scrollProgress * 2.4, 0);
     const isLocked = scatterStrength <= 0;
 
     const [posX, posY, posZ] = position;
@@ -146,7 +149,7 @@ export default function ProjectMonolith({
       }}
     >
       <mesh>
-        <boxGeometry args={[6, 9, 0.2]} />
+        <boxGeometry args={isMobile ? [5, 6, 0.2] : [6, 9, 0.2]} />
         <meshStandardMaterial
           color="#0a0a0a"
           metalness={1}
@@ -160,7 +163,7 @@ export default function ProjectMonolith({
       </mesh>
 
       <mesh position={[0, 0, -0.01]}>
-        <boxGeometry args={[5.8, 8.8, 0.1]} />
+        <boxGeometry args={isMobile ? [4.8, 5.8, 0.1] : [5.8, 8.8, 0.1]} />
         <meshStandardMaterial
           color="#000000"
           transparent
