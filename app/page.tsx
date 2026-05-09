@@ -12,14 +12,14 @@ export default function Home() {
     <>
       {/* Hero */}
       <Hero />
-      {/* Track */}
-      {/* Final Screen: Footer or Contact */}
 
+      {/* Page height */}
       <div className="h-[800vh] w-full pointer-events-none" />
 
       {/* Skills */}
       <Skills />
 
+      {/* Contact terminal */}
       <Terminal />
     </>
   );

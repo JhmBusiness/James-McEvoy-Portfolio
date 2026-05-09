@@ -1,9 +1,9 @@
 // This component works out the x and y coordinates for the project cards, and then maps the project data to create a grid (also including a fixed z coordinate).
+import { ModalName, useModal } from "@/app/_context/ModalContext";
 import { projectData } from "@/app/_lib/data";
+import { IsMobile } from "@/app/_lib/interfaces";
 import { Dispatch, SetStateAction } from "react";
 import ProjectMonolith from "../projects/ProjectMonolith";
-import { ModalName, useModal } from "@/app/_context/ModalContext";
-import { IsMobile } from "@/app/_lib/interfaces";
 
 interface ProjectsContainerProps extends IsMobile {
   setActiveId: Dispatch<SetStateAction<number | null>>;
@@ -20,8 +20,10 @@ export default function ProjectsContainer({
   const { openModal } = useModal();
 
   const COLUMN_COUNT = isMobile ? 2 : 3;
-  const X_SPACING = isMobile ? 5.5 : 8; // Distance between columns
-  const Y_SPACING = isMobile ? 6.5 : 8; // Distance between rows
+  // Distance between columns
+  const X_SPACING = isMobile ? 5.5 : 8;
+  // Distance between rows
+  const Y_SPACING = isMobile ? 6.5 : 8;
 
   function handleProjectClick(id: number | null, modalName: ModalName) {
     setActiveId(id);

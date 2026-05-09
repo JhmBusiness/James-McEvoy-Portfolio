@@ -35,7 +35,6 @@ export default function ProjectMonolith({
   setScrollProgress,
 }: ProjectMonolithProps) {
   const groupRef = useRef<THREE.Group>(null!);
-  // const [scrollProgress, setScrollProgress] = useState(0);
   const [hovered, setHovered] = useState(false);
 
   const localMouse = useRef(new THREE.Vector2(0, 0));

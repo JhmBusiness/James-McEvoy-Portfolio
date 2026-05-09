@@ -3,7 +3,7 @@
 import { useModal } from "@/app/_context/ModalContext";
 import { IsMobile } from "@/app/_lib/interfaces";
 import { useFrame } from "@react-three/fiber";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import * as THREE from "three";
 
 interface RigProps extends IsMobile {
@@ -36,11 +36,6 @@ export default function Rig({
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [setScrollProgress]);
-
-  // useEffect(() => {
-  //   console.log(currentSection);
-  //   console.log(scrollProgress);
-  // }, [currentSection, scrollProgress]);
 
   function scrollToSection(section: number) {
     const totalHeight =
