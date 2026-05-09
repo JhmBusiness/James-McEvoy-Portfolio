@@ -19,7 +19,8 @@ export default function Terminal() {
   const [chatBotStage, setChatBotStage] = useState(0);
   const [highestChatBotStage, setHighestChatBotStage] = useState(0);
   const isMobile = useMediaQuery("(max-width: 640px)");
-  const isTerminalVisible = scrollProgress >= 0.98;
+  const scrollThreshold = isMobile ? 0.98 : 1;
+  const isTerminalVisible = scrollProgress >= scrollThreshold;
   const [hasStarted, setHasStarted] = useState(false);
 
   // Handles scrollProgress
@@ -50,7 +51,11 @@ export default function Terminal() {
   useGSAP(
     () => {
       // Only run if the progress is 1 AND the element exists
-      if (scrollProgress >= 0.98 && !hasStarted && loadingScreen.current) {
+      if (
+        scrollProgress >= scrollThreshold &&
+        !hasStarted &&
+        loadingScreen.current
+      ) {
         setHasStarted(true);
         const tl = gsap.timeline();
 

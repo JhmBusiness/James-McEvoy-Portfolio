@@ -22,6 +22,7 @@ export default function Rig({
 }: RigProps) {
   // ModalState
   const { modalState } = useModal();
+  const scrollThreshold = isMobile ? 0.98 : 1;
 
   // Desktop scroll listener
   useEffect(() => {
@@ -151,7 +152,7 @@ export default function Rig({
     );
 
     // Mouse parallax
-    if (scrollProgress <= 0.98 && !isMobile) {
+    if (scrollProgress < scrollThreshold && !isMobile) {
       state.camera.position.x = THREE.MathUtils.lerp(
         state.camera.position.x,
         state.pointer.x * 1.5,
