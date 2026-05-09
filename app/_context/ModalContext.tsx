@@ -167,13 +167,13 @@ function ThePondModal() {
         <h3>THE WEBSITES CORE FEATURES:</h3>
         <div className="mt-6 flex flex-col gap-20 text-left">
           {/* First section */}
-          <div className="flex gap-20 items-center justify-center">
+          <div className="flex-col gap-6 flex lg:flex-row lg:gap-20 items-center justify-center">
             <img
               src={firstImg}
               alt="Desktop and laptop view of the apps dashboard."
-              className="w-full max-w-[666px]"
+              className="w-full lg:w-4/5 max-w-[666px]"
             />
-            <div>
+            <div className="w-fit max-w-120 lg:max-w-max lg:w-75 shrink-0">
               <p className="mb-6">
                 When users first enter the app, the first thing they see is the
                 their dashboard, which features their:
@@ -188,13 +188,13 @@ function ThePondModal() {
             </div>
           </div>
           {/* Second section */}
-          <div className="flex flex-row-reverse gap-20 items-center justify-center">
+          <div className="flex-col gap-6 flex lg:flex-row-reverse lg:gap-20 items-center justify-center">
             <img
               src={secondImg}
               alt="Laptop and mobile view of the edit a post, and new habit modals."
-              className="w-full max-w-[600px]"
+              className="w-full lg:w-4/5 max-w-[600px]"
             />
-            <p className="text-right">
+            <p className="text-right w-fit max-w-120 lg:max-w-max lg:min-w-77.5">
               Users can create habits, posts and edit content through various
               modals.
               <br />
@@ -205,13 +205,13 @@ function ThePondModal() {
             </p>
           </div>
           {/* Third section */}
-          <div className="flex gap-20 items-center justify-center">
+          <div className="flex-col gap-6 flex lg:flex-row lg:gap-20 items-center justify-center">
             <img
               src={thirdImg}
               alt="Tablet and mobile view of the explore page displaying users milestone posts."
-              className="w-full max-w-[404px]"
+              className="w-full lg:w-4/5 max-w-[404px]"
             />
-            <div>
+            <div className="w-fit max-w-120 lg:max-w-max lg:min-w-85">
               <p className="mb-6">
                 The explore page is where all of the users posts get shown.
               </p>
@@ -307,13 +307,13 @@ function SmilingSoleReflexologyModal() {
         <h3>THE WEBSITES CORE FEATURES:</h3>
         <div className="mt-6 flex flex-col gap-20 text-left">
           {/* First section */}
-          <div className="flex gap-20 items-center justify-center">
+          <div className="flex-col gap-6 flex lg:flex-row lg:gap-20 items-center justify-center">
             <img
               src={firstImg}
               alt="Desktop and laptop view of the websites employee only dashboard."
-              className="w-full max-w-[666px]"
+              className="w-full lg:w-4/5 max-w-[666px]"
             />
-            <p>
+            <p className="w-fit max-w-120 lg:max-w-max lg:w-75 shrink-0">
               The dashboard is my favourite feature of the website, perhaps
               because it was my first time creating one.
               <br />
@@ -326,13 +326,13 @@ function SmilingSoleReflexologyModal() {
             </p>
           </div>
           {/* Second section */}
-          <div className="flex flex-row-reverse gap-20 items-center justify-center">
+          <div className="flex-col gap-6 flex lg:flex-row-reverse lg:gap-20 items-center justify-center">
             <img
               src={secondImg}
               alt="Laptop and mobile view of the treatment lists."
-              className="w-full max-w-[600px]"
+              className="w-full lg:w-4/5 max-w-[600px]"
             />
-            <p className="text-right">
+            <p className="text-right w-fit max-w-120 lg:max-w-max lg:min-w-77.5">
               One of the core features that the client requested was to feature
               all of the treatments they provide.
               <br />
@@ -342,13 +342,13 @@ function SmilingSoleReflexologyModal() {
             </p>
           </div>
           {/* Third section */}
-          <div className="flex gap-20 items-center justify-center">
+          <div className="flex-col gap-6 flex lg:flex-row lg:gap-20 items-center justify-center">
             <img
               src={thirdImg}
               alt="Tablet and mobile view of the contact form."
-              className="w-full max-w-[404px]"
+              className="w-full lg:w-4/5 max-w-[404px]"
             />
-            <p>
+            <p className="w-fit max-w-120 lg:max-w-max lg:min-w-85">
               The form was built with React Hook Form, and reCAPTCHA to prevent
               spam.
               <br />
@@ -436,13 +436,13 @@ function CobaltDevelopmentModal() {
         <h3>THE WEBSITES CORE FEATURES:</h3>
         <div className="mt-6 flex flex-col gap-20 text-left">
           {/* First section */}
-          <div className="flex gap-20 items-center justify-center">
+          <div className="flex-col gap-6 flex lg:flex-row lg:gap-20 items-center justify-center">
             <img
               src={firstImg}
               alt="Desktop and laptop view of the apps dashboard."
-              className="w-full max-w-[666px]"
+              className="w-full lg:w-4/5 max-w-[666px]"
             />
-            <p>
+            <p className="w-fit max-w-120 lg:max-w-max lg:w-75 shrink-0">
               The main feature of this website is to advertise their development
               projects which are featured on their other website Cobalt
               Construction.
@@ -453,13 +453,13 @@ function CobaltDevelopmentModal() {
             </p>
           </div>
           {/* Second section */}
-          <div className="flex flex-row-reverse gap-20 items-center justify-center">
+          <div className="flex-col gap-6 flex lg:flex-row-reverse lg:gap-20 items-center justify-center">
             <img
               src={secondImg}
               alt="Laptop and mobile view of the edit a post, and new habit modals."
-              className="w-full max-w-[600px]"
+              className="w-full lg:w-4/5 max-w-[600px]"
             />
-            <p className="text-right">
+            <p className="text-right w-fit max-w-120 lg:max-w-max lg:min-w-77.5">
               The section uses a standard HTML form secured by reCAPTCHA. Upon
               form submission, the data is sent to Formspree for the client to
               access.
@@ -542,13 +542,13 @@ function CobaltConstructionModal() {
         <h3>THE WEBSITES CORE FEATURES:</h3>
         <div className="mt-6 flex flex-col gap-20 text-left">
           {/* First section */}
-          <div className="flex gap-20 items-center justify-center">
+          <div className="flex-col gap-6 flex lg:flex-row lg:gap-20 items-center justify-center">
             <img
               src={firstImg}
               alt="Desktop and laptop view of the apps dashboard."
-              className="w-full max-w-[666px]"
+              className="w-full lg:w-4/5 max-w-[666px]"
             />
-            <p>
+            <p className="w-fit max-w-120 lg:max-w-max lg:w-75 shrink-0">
               Projects are displayed by applying the active classes to map pins
               showing where the project was located.
               <br />
@@ -558,13 +558,13 @@ function CobaltConstructionModal() {
             </p>
           </div>
           {/* Second section */}
-          <div className="flex flex-row-reverse gap-20 items-center justify-center">
+          <div className="flex-col gap-6 flex lg:flex-row-reverse lg:gap-20 items-center justify-center">
             <img
               src={secondImg}
               alt="Laptop and mobile view of the edit a post, and new habit modals."
-              className="w-full max-w-[404px]"
+              className="w-full lg:w-4/5 max-w-[600px]"
             />
-            <p className="text-right">
+            <p className="text-right w-fit max-w-120 lg:max-w-max lg:min-w-77.5">
               The projects page features projects listed in
               chronological&nbsp;order.
               <br />
@@ -647,13 +647,13 @@ function CobaltHubModal() {
         <h3>THE WEBSITES CORE FEATURES:</h3>
         <div className="mt-6 flex flex-col gap-20 text-left">
           {/* First section */}
-          <div className="flex gap-20 items-center justify-center">
+          <div className="flex-col gap-6 flex lg:flex-row lg:gap-20 items-center justify-center">
             <img
               src={firstImg}
               alt="Desktop and laptop view of the apps dashboard."
-              className="w-full max-w-[666px]"
+              className="w-full lg:w-4/5 max-w-[666px]"
             />
-            <p>
+            <p className="w-fit max-w-120 lg:max-w-max lg:w-75 shrink-0">
               The lesson from this project isn&apos;t what you&apos;d think. It
               actually comes from handling the hosting platform Hosting. It was
               my first time using subdomains, and having to correctly manage the
@@ -736,13 +736,13 @@ function CobaltAluminiumModal() {
         <h3>THE WEBSITES CORE FEATURES:</h3>
         <div className="mt-6 flex flex-col gap-20 text-left">
           {/* First section */}
-          <div className="flex gap-20 items-center justify-center">
+          <div className="flex-col gap-6 flex lg:flex-row lg:gap-20 items-center justify-center">
             <img
               src={firstImg}
               alt="Desktop and laptop view of the apps dashboard."
-              className="w-full max-w-[666px]"
+              className="w-full lg:w-4/5 max-w-[666px]"
             />
-            <p>
+            <p className="w-fit max-w-120 lg:max-w-max lg:w-75 shrink-0">
               The website contains two rows. One for doors & windows, and the
               other their accessories.
               <br />
@@ -756,27 +756,27 @@ function CobaltAluminiumModal() {
             </p>
           </div>
           {/* Second section */}
-          <div className="flex flex-row-reverse gap-20 items-center justify-center text-right">
+          <div className="flex-col gap-6 flex lg:flex-row-reverse lg:gap-20 items-center justify-center text-right">
             <img
               src={secondImg}
               alt="Tablet and mobile view of the explore page displaying users milestone posts."
-              className="w-full max-w-[404px]"
+              className="w-full lg:w-4/5 max-w-[404px]"
             />
 
-            <p>
+            <p className="text-right w-fit max-w-120 lg:max-w-max lg:min-w-77.5">
               The section uses a standard HTML form secured by reCAPTCHA. Upon
               form submission, the data is sent to Formspree for the client to
               access.
             </p>
           </div>
           {/* Third section */}
-          <div className="flex gap-20 items-center justify-center">
+          <div className="flex-col gap-6 flex lg:flex-row lg:gap-20 items-center justify-center">
             <img
               src={thirdImg}
               alt="Laptop and mobile view of the edit a post, and new habit modals."
-              className="w-full max-w-[600px]"
+              className="w-full lg:w-4/5 max-w-[600px]"
             />
-            <div>
+            <div className="w-fit max-w-120 lg:max-w-max lg:min-w-85">
               <p className="mb-6">
                 The individual product page features the following:
               </p>
