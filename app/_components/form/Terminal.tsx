@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { ScrambleTextPlugin, TextPlugin } from "gsap/all";
 import { useEffect, useRef, useState } from "react";
 import Form from "./Form";
+import { useMediaQuery } from "usehooks-ts";
 
 export default function Terminal() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -14,6 +15,7 @@ export default function Terminal() {
   const [loadingStageComplete, setLoadingStageComplete] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [chatBotStage, setChatBotStage] = useState(0);
+  const isMobile = useMediaQuery("(max-width: 640px)");
 
   // Handles scrollProgress
   useEffect(() => {
@@ -132,7 +134,7 @@ export default function Terminal() {
           })
           .to(loadingBar.current, {
             duration: 1.4,
-            width: "99%",
+            width: isMobile ? "98.5%" : "99%",
             ease: "cubic-bezier(0.33, 1, 0.68, 1)",
             onUpdate: function () {
               const currentPercent = 65 + Math.round(this.progress() * 35);
@@ -304,17 +306,17 @@ export default function Terminal() {
             {loadingStageComplete === false && (
               <div ref={loadingScreen}>
                 <h4>J-MCE.BOT</h4>
-                <div className="relative w-100 h-8 border border-accent mt-3 mb-1">
+                <div className="relative w-60 sm:w-100 h-8 border border-accent mt-3 mb-1">
                   <div
                     ref={loadingBar}
                     className="w-0 h-[calc(100%-4px)] p-px bg-accent mt-0.5 ml-0.5"
                   ></div>
                 </div>
                 <div className="flex justify-between items-center">
-                  <p ref={textRef} className="text-sm">
+                  <p ref={textRef} className="text-xs sm:text-sm">
                     {loadingScreenData[0].label}
                   </p>
-                  <p className="text-sm">{loadBarPercent}%</p>
+                  <p className="text-xs sm:text-sm">{loadBarPercent}%</p>
                 </div>
               </div>
             )}
@@ -324,7 +326,7 @@ export default function Terminal() {
                 setChatBotStage={setChatBotStage}
               >
                 <h4
-                  className="absolute inset-0 flex justify-center items-center"
+                  className="absolute inset-0 flex justify-center items-center px-6 sm:px-10 lg:px-20"
                   ref={chatBotRef}
                 ></h4>
               </Form>

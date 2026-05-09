@@ -28,6 +28,8 @@ export default function Form({
   const [userMessageInput, setUserMessageInput] = useState("");
   const [yesOrNoInput, setYesOrNoInput] = useState("");
 
+  const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userEmailInput.trim());
+
   const nameInputWidth = Math.max(200, userNameInput.length * 14);
   const emailInputWidth = Math.max(200, userEmailInput.length * 14);
   const messageInputWidth = Math.max(200, userMessageInput.length * 14);
@@ -187,13 +189,13 @@ export default function Form({
                 style={{ width: `${emailInputWidth}px` }}
                 {...emailRegister}
                 value={userEmailInput}
-                placeholder="Email / Phone"
+                placeholder="Email"
                 onChange={(e) => {
                   setUserEmailInput(e.target.value);
                   emailOnChange(e);
                 }}
                 onKeyDown={(e) => {
-                  if (e.key === "Enter" && userEmailInput.length > 0) {
+                  if (e.key === "Enter" && isValidEmail) {
                     e.preventDefault();
                     setChatBotStage((prev) => prev + 1);
                   }
@@ -203,13 +205,17 @@ export default function Form({
           </>
         )}
 
-        {chatBotStage === 4 &&
-          dirtyFields.email &&
-          userEmailInput.length > 0 && (
-            <p className="absolute text-grey/60 text-base w-100 pointer-events-none">
-              [PRESS ENTER TO COMMIT]
-            </p>
-          )}
+        {chatBotStage === 4 && dirtyFields.email && isValidEmail && (
+          <p className="absolute text-grey/60 text-base w-100 pointer-events-none">
+            [PRESS ENTER TO COMMIT]
+          </p>
+        )}
+
+        {chatBotStage === 4 && dirtyFields.email && !isValidEmail && (
+          <p className="absolute text-grey/60 text-base w-100 pointer-events-none">
+            [PRESS ENTER A VALID EMAIL]
+          </p>
+        )}
 
         {/* Y or N */}
         {chatBotStage === 5 && (
@@ -235,6 +241,7 @@ export default function Form({
                       setChatBotStage((prev) => prev + 1);
                     } else if (yesOrNoInput.toUpperCase() === "N") {
                       setChatBotStage(10);
+                      setYesOrNoInput("");
                     }
                   }
                 }}
@@ -256,29 +263,53 @@ export default function Form({
 
         {/* Edit screen */}
         {chatBotStage === 10 && (
-          <div className="absolute inset-0 flex flex-col mt-50 gap-4 text-left font-mono items-center justify-center max-w-4/5 mx-auto overflow-hidden">
-            <p className="animate-pulse text-sm text-grey pointer-events-none">
-              [ CLICK A LINE TO EDIT DATA ]
+          <div className="absolute inset-0 flex flex-col mt-75 lg:mt-60 gap-4 text-left font-mono items-center justify-center max-w-4/5 mx-auto overflow-hidden">
+            <p className="absolute text-center bottom-6 md:relative animate-pulse text-sm text-grey pointer-events-none">
+              [&nbsp;CLICK A LINE TO EDIT&nbsp;DATA&nbsp;]
             </p>
             <button
               onClick={() => setChatBotStage(1)}
-              className="hover:text-accent duration-200 cursor-pointer px-20"
+              className="hover:text-accent duration-200 cursor-pointer px-6 md:px-20 pointer-events-auto"
             >
-              1. NAME: <span className="text-grey">{userNameInput}</span>
+              1. NAME: <br className="sm:hidden" />
+              <span className="text-grey hidden md:inline-block">
+                {userNameInput}
+              </span>
+              <span className="text-grey md:hidden">
+                {userNameInput.length > 20
+                  ? userNameInput.slice(0, 20) + "..."
+                  : userNameInput}
+              </span>
             </button>
 
             <button
               onClick={() => setChatBotStage(3)}
-              className="hover:text-accent duration-200 cursor-pointer px-20"
+              className="hover:text-accent duration-200 cursor-pointer px-6 md:px-20 pointer-events-auto"
             >
-              2. MESSAGE: <span className="text-grey">{userMessageInput}</span>
+              2. MESSAGE: <br className="sm:hidden" />
+              <span className="text-grey hidden md:inline-block">
+                {userMessageInput}
+              </span>
+              <span className="text-grey md:hidden">
+                {userMessageInput.length > 20
+                  ? userMessageInput.slice(0, 20) + "..."
+                  : userMessageInput}
+              </span>
             </button>
 
             <button
               onClick={() => setChatBotStage(4)}
-              className="hover:text-accent duration-200 cursor-pointer px-20"
+              className="hover:text-accent duration-200 cursor-pointer px-6 md:px-20 pointer-events-auto"
             >
-              3. CONTACT: <span className="text-grey">{userEmailInput}</span>
+              3. CONTACT: <br className="sm:hidden" />
+              <span className="text-grey hidden md:inline-block">
+                {userEmailInput}
+              </span>{" "}
+              <span className="text-grey md:hidden">
+                {userEmailInput.length > 20
+                  ? userEmailInput.slice(0, 20) + "..."
+                  : userEmailInput}
+              </span>
             </button>
           </div>
         )}
