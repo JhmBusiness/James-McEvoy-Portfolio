@@ -137,7 +137,7 @@ function ThePondModal() {
           aria-label="A button to the actual projects live site."
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xl text-accent/60 hover:text-accent duration-200"
+          className="text-xl text-grey animate-pulse hover:text-accent duration-200"
         >
           [ LIVE SITE ]
         </Link>
@@ -279,7 +279,7 @@ function SmilingSoleReflexologyModal() {
           aria-label="A button to the actual projects live site."
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xl text-accent/60 hover:text-accent duration-200"
+          className="text-xl text-grey animate-pulse hover:text-accent duration-200"
         >
           [ LIVE SITE ]
         </Link>
@@ -412,7 +412,7 @@ function CobaltDevelopmentModal() {
           aria-label="A button to the actual projects live site."
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xl text-accent/60 hover:text-accent duration-200"
+          className="text-xl text-grey animate-pulse hover:text-accent duration-200"
         >
           [ LIVE SITE ]
         </Link>
@@ -521,7 +521,7 @@ function CobaltConstructionModal() {
           aria-label="A button to the actual projects live site."
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xl text-accent/60 hover:text-accent duration-200"
+          className="text-xl text-grey animate-pulse hover:text-accent duration-200"
         >
           [ LIVE SITE ]
         </Link>
@@ -628,7 +628,7 @@ function CobaltHubModal() {
           aria-label="A button to the actual projects live site."
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xl text-accent/60 hover:text-accent duration-200"
+          className="text-xl text-grey animate-pulse hover:text-accent duration-200"
         >
           [ LIVE SITE ]
         </Link>
@@ -717,7 +717,7 @@ function CobaltAluminiumModal() {
           aria-label="A button to the actual projects live site."
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xl text-accent/60 hover:text-accent duration-200"
+          className="text-xl text-grey animate-pulse hover:text-accent duration-200"
         >
           [ LIVE SITE ]
         </Link>
