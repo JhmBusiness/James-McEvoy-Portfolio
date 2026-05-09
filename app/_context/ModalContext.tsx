@@ -135,7 +135,8 @@ function ThePondModal() {
         <Link
           href={liveUrl}
           aria-label="A button to the actual projects live site."
-          target="__blank"
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-xl text-accent/60 hover:text-accent duration-200"
         >
           [ LIVE SITE ]
@@ -244,7 +245,8 @@ function ThePondModal() {
           href={liveUrl}
           aria-label="A button to the actual projects live site."
           className="font-medium px-6 py-4 border border-light rounded-full hover:bg-light duration-200 hover:text-dark"
-          target="__blank"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Visit the project
         </Link>
@@ -275,7 +277,8 @@ function SmilingSoleReflexologyModal() {
         <Link
           href={liveUrl}
           aria-label="A button to the actual projects live site."
-          target="__blank"
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-xl text-accent/60 hover:text-accent duration-200"
         >
           [ LIVE SITE ]
@@ -375,7 +378,8 @@ function SmilingSoleReflexologyModal() {
           href={liveUrl}
           aria-label="A button to the actual projects live site."
           className="font-medium px-6 py-4 border border-light rounded-full hover:bg-light duration-200 hover:text-dark"
-          target="__blank"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Visit the project
         </Link>
@@ -406,7 +410,8 @@ function CobaltDevelopmentModal() {
         <Link
           href={liveUrl}
           aria-label="A button to the actual projects live site."
-          target="__blank"
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-xl text-accent/60 hover:text-accent duration-200"
         >
           [ LIVE SITE ]
@@ -482,7 +487,8 @@ function CobaltDevelopmentModal() {
           href={liveUrl}
           aria-label="A button to the actual projects live site."
           className="font-medium px-6 py-4 border border-light rounded-full hover:bg-light duration-200 hover:text-dark"
-          target="__blank"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Visit the project
         </Link>
@@ -513,7 +519,8 @@ function CobaltConstructionModal() {
         <Link
           href={liveUrl}
           aria-label="A button to the actual projects live site."
-          target="__blank"
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-xl text-accent/60 hover:text-accent duration-200"
         >
           [ LIVE SITE ]
@@ -587,7 +594,8 @@ function CobaltConstructionModal() {
           href={liveUrl}
           aria-label="A button to the actual projects live site."
           className="font-medium px-6 py-4 border border-light rounded-full hover:bg-light duration-200 hover:text-dark"
-          target="__blank"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Visit the project
         </Link>
@@ -618,7 +626,8 @@ function CobaltHubModal() {
         <Link
           href={liveUrl}
           aria-label="A button to the actual projects live site."
-          target="__blank"
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-xl text-accent/60 hover:text-accent duration-200"
         >
           [ LIVE SITE ]
@@ -674,7 +683,8 @@ function CobaltHubModal() {
           href={liveUrl}
           aria-label="A button to the actual projects live site."
           className="font-medium px-6 py-4 border border-light rounded-full hover:bg-light duration-200 hover:text-dark"
-          target="__blank"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Visit the project
         </Link>
@@ -705,7 +715,8 @@ function CobaltAluminiumModal() {
         <Link
           href={liveUrl}
           aria-label="A button to the actual projects live site."
-          target="__blank"
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-xl text-accent/60 hover:text-accent duration-200"
         >
           [ LIVE SITE ]
@@ -810,7 +821,8 @@ function CobaltAluminiumModal() {
           href={liveUrl}
           aria-label="A button to the actual projects live site."
           className="font-medium px-6 py-4 border border-light rounded-full hover:bg-light duration-200 hover:text-dark"
-          target="__blank"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Visit the project
         </Link>

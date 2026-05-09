@@ -277,7 +277,7 @@ export default function Terminal() {
     },
     {
       scope: terminalRef,
-      dependencies: [loadingStageComplete, scrollProgress, chatBotStage],
+      dependencies: [loadingStageComplete, chatBotStage],
     },
   );
 
