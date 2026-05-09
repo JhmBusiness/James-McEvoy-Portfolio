@@ -15,7 +15,9 @@ export default function Terminal() {
   const [loadingStageComplete, setLoadingStageComplete] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [chatBotStage, setChatBotStage] = useState(0);
+  const [highestChatBotStage, setHighestChatBotStage] = useState(0);
   const isMobile = useMediaQuery("(max-width: 640px)");
+  const isTerminalVisible = scrollProgress >= 1;
 
   // Handles scrollProgress
   useEffect(() => {
@@ -34,23 +36,6 @@ export default function Terminal() {
       window.removeEventListener("resize", handleScroll);
     };
   }, []);
-
-  // Lock user scroll while loading animation plays
-  useEffect(() => {
-    const unlockScroll = () => {
-      document.body.style.overflow = "unset";
-      document.body.style.height = "unset";
-    };
-
-    if (!loadingStageComplete && isPlaying) {
-      document.body.style.overflow = "hidden";
-      document.body.style.height = "100vh";
-    } else {
-      unlockScroll();
-    }
-
-    return unlockScroll;
-  }, [loadingStageComplete, isPlaying]);
 
   gsap.registerPlugin(useGSAP, TextPlugin, ScrambleTextPlugin);
   const loadingScreen = useRef(null);
@@ -190,7 +175,10 @@ export default function Terminal() {
                 duration: 1.2,
                 text: chatBotScript[2].label,
                 ease: "none",
-                onComplete: () => setChatBotStage(1),
+                onComplete: () => {
+                  setChatBotStage(1);
+                  setHighestChatBotStage(1);
+                },
               });
           }
 
@@ -225,6 +213,7 @@ export default function Terminal() {
                 ease: "none",
                 onComplete: () => {
                   setChatBotStage(3);
+                  setHighestChatBotStage(3);
                 },
               });
           }
@@ -295,44 +284,52 @@ export default function Terminal() {
   return (
     <>
       <AnimatePresence>
-        {scrollProgress === 1 && (
-          <motion.section
-            ref={terminalRef}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-            className="fixed inset-0 flex justify-center items-center z-10 w-4/5 h-4/5 text-center m-auto pointer-events-none"
-          >
-            {loadingStageComplete === false && (
-              <div ref={loadingScreen}>
-                <h4>J-MCE.BOT</h4>
-                <div className="relative w-60 sm:w-100 h-8 border border-accent mt-3 mb-1">
-                  <div
-                    ref={loadingBar}
-                    className="w-0 h-[calc(100%-4px)] p-px bg-accent mt-0.5 ml-0.5"
-                  ></div>
-                </div>
-                <div className="flex justify-between items-center">
-                  <p ref={textRef} className="text-xs sm:text-sm">
-                    {loadingScreenData[0].label}
-                  </p>
-                  <p className="text-xs sm:text-sm">{loadBarPercent}%</p>
-                </div>
+        <motion.section
+          ref={terminalRef}
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: isTerminalVisible ? 1 : 0,
+            scale: isTerminalVisible ? 1 : 0,
+          }}
+          transition={{
+            opacity: { duration: 0.4, delay: isTerminalVisible ? 0.8 : 0 },
+            scale: {
+              duration: isTerminalVisible ? 0 : 0,
+            },
+          }}
+          className="fixed inset-0 flex justify-center items-center z-10 w-4/5 h-4/5 text-center m-auto pointer-events-none"
+        >
+          {loadingStageComplete === false && (
+            <div ref={loadingScreen}>
+              <h4>J-MCE.BOT</h4>
+              <div className="relative w-60 sm:w-100 h-8 border border-accent mt-3 mb-1">
+                <div
+                  ref={loadingBar}
+                  className="w-0 h-[calc(100%-4px)] p-px bg-accent mt-0.5 ml-0.5"
+                ></div>
               </div>
-            )}
-            {loadingStageComplete === true && (
-              <Form
-                chatBotStage={chatBotStage}
-                setChatBotStage={setChatBotStage}
-              >
-                <h4
-                  className="absolute inset-0 flex justify-center items-center px-6 sm:px-10 lg:px-20"
-                  ref={chatBotRef}
-                ></h4>
-              </Form>
-            )}
-          </motion.section>
-        )}
+              <div className="flex justify-between items-center">
+                <p ref={textRef} className="text-xs sm:text-sm">
+                  {loadingScreenData[0].label}
+                </p>
+                <p className="text-xs sm:text-sm">{loadBarPercent}%</p>
+              </div>
+            </div>
+          )}
+          {loadingStageComplete === true && (
+            <Form
+              chatBotStage={chatBotStage}
+              setChatBotStage={setChatBotStage}
+              setHighestChatBotStage={setHighestChatBotStage}
+              highestChatBotStage={highestChatBotStage}
+            >
+              <h4
+                className="absolute inset-0 flex justify-center items-center px-6 sm:px-10 lg:px-20"
+                ref={chatBotRef}
+              ></h4>
+            </Form>
+          )}
+        </motion.section>
       </AnimatePresence>
     </>
   );

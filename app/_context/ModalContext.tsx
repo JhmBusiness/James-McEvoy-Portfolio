@@ -136,7 +136,7 @@ function ThePondModal() {
           href={liveUrl}
           aria-label="A button to the actual projects live site."
           target="__blank"
-          className="text-xl text-grey hover:text-accent duration-200"
+          className="text-xl text-accent/60 hover:text-accent duration-200"
         >
           [ LIVE SITE ]
         </Link>
@@ -276,7 +276,7 @@ function SmilingSoleReflexologyModal() {
           href={liveUrl}
           aria-label="A button to the actual projects live site."
           target="__blank"
-          className="text-xl text-grey hover:text-accent duration-200"
+          className="text-xl text-accent/60 hover:text-accent duration-200"
         >
           [ LIVE SITE ]
         </Link>
@@ -407,7 +407,7 @@ function CobaltDevelopmentModal() {
           href={liveUrl}
           aria-label="A button to the actual projects live site."
           target="__blank"
-          className="text-xl text-grey hover:text-accent duration-200"
+          className="text-xl text-accent/60 hover:text-accent duration-200"
         >
           [ LIVE SITE ]
         </Link>
@@ -514,7 +514,7 @@ function CobaltConstructionModal() {
           href={liveUrl}
           aria-label="A button to the actual projects live site."
           target="__blank"
-          className="text-xl text-grey hover:text-accent duration-200"
+          className="text-xl text-accent/60 hover:text-accent duration-200"
         >
           [ LIVE SITE ]
         </Link>
@@ -619,7 +619,7 @@ function CobaltHubModal() {
           href={liveUrl}
           aria-label="A button to the actual projects live site."
           target="__blank"
-          className="text-xl text-grey hover:text-accent duration-200"
+          className="text-xl text-accent/60 hover:text-accent duration-200"
         >
           [ LIVE SITE ]
         </Link>
@@ -706,7 +706,7 @@ function CobaltAluminiumModal() {
           href={liveUrl}
           aria-label="A button to the actual projects live site."
           target="__blank"
-          className="text-xl text-grey hover:text-accent duration-200"
+          className="text-xl text-accent/60 hover:text-accent duration-200"
         >
           [ LIVE SITE ]
         </Link>

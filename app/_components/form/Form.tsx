@@ -10,6 +10,8 @@ interface FormProps {
   children: React.ReactNode;
   chatBotStage: number;
   setChatBotStage: Dispatch<SetStateAction<number>>;
+  setHighestChatBotStage: Dispatch<SetStateAction<number>>;
+  highestChatBotStage: number;
 }
 
 type Inputs = {
@@ -22,6 +24,8 @@ export default function Form({
   children,
   chatBotStage,
   setChatBotStage,
+  setHighestChatBotStage,
+  highestChatBotStage,
 }: FormProps) {
   const [userNameInput, setUserNameInput] = useState("");
   const [userEmailInput, setUserEmailInput] = useState("");
@@ -72,25 +76,14 @@ export default function Form({
   const { onChange: messageOnChange, ...messageRegister } = register("message");
   const { onChange: emailOnChange, ...emailRegister } = register("email");
 
-  useEffect(() => {
-    // Lock scroll if the loading is still happening OR if the user has started typing
-    if (isDirty) {
-      document.body.style.overflow = "hidden";
-      document.body.style.height = "100vh";
-      // Optional: add touch-action none for mobile stubbornness
-      document.body.style.touchAction = "none";
+  function handleStageIncrease() {
+    if (highestChatBotStage >= 5) {
+      setChatBotStage(5);
     } else {
-      document.body.style.overflow = "unset";
-      document.body.style.height = "unset";
-      document.body.style.touchAction = "unset";
+      setChatBotStage((prev) => prev + 1);
+      setHighestChatBotStage((prev) => prev + 1);
     }
-
-    return () => {
-      document.body.style.overflow = "unset";
-      document.body.style.height = "unset";
-      document.body.style.touchAction = "unset";
-    };
-  }, [isDirty]);
+  }
 
   return (
     // I haven't used required as we will check if the field is dirty before the submit/next btn is clickable.
@@ -122,7 +115,7 @@ export default function Form({
                 onKeyDown={(e) => {
                   if (e.key === "Enter" && userNameInput.length > 0) {
                     e.preventDefault();
-                    setChatBotStage((prev) => prev + 1);
+                    handleStageIncrease();
                   }
                 }}
               />
@@ -158,7 +151,7 @@ export default function Form({
                 onKeyDown={(e) => {
                   if (e.key === "Enter" && userMessageInput.length > 0) {
                     e.preventDefault();
-                    setChatBotStage((prev) => prev + 1);
+                    handleStageIncrease();
                   }
                 }}
               />
@@ -197,7 +190,7 @@ export default function Form({
                 onKeyDown={(e) => {
                   if (e.key === "Enter" && isValidEmail) {
                     e.preventDefault();
-                    setChatBotStage((prev) => prev + 1);
+                    handleStageIncrease();
                   }
                 }}
               />
@@ -239,6 +232,7 @@ export default function Form({
                     if (yesOrNoInput.toUpperCase() === "Y") {
                       handleSubmit(onSubmit)();
                       setChatBotStage((prev) => prev + 1);
+                      setHighestChatBotStage((prev) => prev + 1);
                     } else if (yesOrNoInput.toUpperCase() === "N") {
                       setChatBotStage(10);
                       setYesOrNoInput("");
