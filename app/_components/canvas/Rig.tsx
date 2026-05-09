@@ -1,5 +1,6 @@
 "use client";
 
+import { useModal } from "@/app/_context/ModalContext";
 import { IsMobile } from "@/app/_lib/interfaces";
 import { useFrame } from "@react-three/fiber";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
@@ -19,6 +20,9 @@ export default function Rig({
   scrollProgress,
   setScrollProgress,
 }: RigProps) {
+  // ModalState
+  const { modalState } = useModal();
+
   // Desktop scroll listener
   useEffect(() => {
     const handleScroll = () => {
@@ -33,10 +37,10 @@ export default function Rig({
     return () => window.removeEventListener("scroll", handleScroll);
   }, [setScrollProgress]);
 
-  useEffect(() => {
-    console.log(currentSection);
-    console.log(scrollProgress);
-  }, [currentSection, scrollProgress]);
+  // useEffect(() => {
+  //   console.log(currentSection);
+  //   console.log(scrollProgress);
+  // }, [currentSection, scrollProgress]);
 
   function scrollToSection(section: number) {
     const totalHeight =
@@ -85,7 +89,7 @@ export default function Rig({
   }
 
   useEffect(() => {
-    if (!isMobile) return;
+    if (!isMobile || modalState.name !== null) return;
     let touchStartY = 0;
     let touchEndY = 0;
 
@@ -121,7 +125,7 @@ export default function Rig({
 
       window.removeEventListener("touchend", handleTouchEnd);
     };
-  }, [isMobile]);
+  }, [isMobile, modalState]);
 
   useFrame((state) => {
     const startZ = 8;

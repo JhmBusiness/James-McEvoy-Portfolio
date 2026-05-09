@@ -23,7 +23,7 @@ export type ModalName =
 
 type ArbitraryProps = Record<string, unknown>;
 
-interface modalState {
+export interface modalState {
   name: ModalName | null;
   props: ArbitraryProps;
 }
@@ -37,6 +37,7 @@ interface ModalWrapperProps {
 interface modalContextType {
   openModal: (name: ModalName) => void;
   closeModal: () => void;
+  modalState: modalState;
 }
 
 interface modalProviderProps {
@@ -60,6 +61,7 @@ function ModalWrapper({ children, onClose }: ModalWrapperProps) {
     // Backdrop
     <>
       <motion.div
+        id="modal"
         className="fixed inset-0 w-full h-100dvh flex justify-center backdrop-blur-[2px] z-50"
         onClick={onClose}
         onWheel={(e) => e.stopPropagation()}
@@ -69,9 +71,9 @@ function ModalWrapper({ children, onClose }: ModalWrapperProps) {
         exit={{ opacity: 0 }}
       >
         {/* Modal Card */}
-        <div className="min-h-[calc(100%)] w-full overflow-scroll flex justify-center">
+        <div className="min-h-[calc(100%)] w-full overflow-y-scroll flex justify-center">
           <motion.div
-            className="bg-linear-to-bl from-[#212121] to-[#1d1d1d] max-w-341.5 w-4/5 my-20 can-scroll rounded-4xl h-fit"
+            className="bg-linear-to-bl from-[#212121] to-[#1d1d1d] max-w-341.5 lg:w-4/5 my-16 can-scroll rounded-4xl h-fit"
             onClick={(e) => e.stopPropagation()}
             initial={{ scale: 0.8, y: windowHeight }}
             animate={{ scale: 1, y: 0 }}
@@ -82,7 +84,7 @@ function ModalWrapper({ children, onClose }: ModalWrapperProps) {
             }}
           >
             {/* Content Area */}
-            <div className="overflow-scroll px-40 mt-30 flex flex-col gap-100 justify-center text-center">
+            <div className="overflow-y-scroll px-6 lg:px-40 mt-20 lg:mt-30 flex flex-col gap-80 lg:gap-100 justify-center text-center">
               {children}
             </div>
           </motion.div>
@@ -90,7 +92,7 @@ function ModalWrapper({ children, onClose }: ModalWrapperProps) {
 
         <motion.button
           onClick={onClose}
-          className="fixed top-10 right-10 cursor-pointer z-60 flex items-center justify-center w-10 h-10 rounded-full border border-light/10 bg-light/5 backdrop-blur-sm hover:border-light/40 duration-200 hover:scale-110 active:scale-95"
+          className="fixed bottom-10 lg:bottom-auto lg:top-10 lg:right-10 cursor-pointer z-60 flex items-center justify-center w-10 h-10 rounded-full border border-light/10 bg-light/5 backdrop-blur-sm hover:border-light/40 duration-200 hover:scale-110 active:scale-95"
           initial={{ scale: 0.4, opacity: 0 }}
           animate={{ scale: [0.4, 1.2, 1], opacity: 1 }}
           exit={{ scale: 0, opacity: 0 }}
@@ -149,7 +151,7 @@ function ThePondModal() {
       {/* Technology stack */}
       <div>
         <h3>THE TECHNOLOGY STACK:</h3>
-        <div className="my-6 flex justify-center items-center gap-10">
+        <div className="my-6 flex flex-wrap justify-center items-center gap-10">
           <TechnologyStackIcons logos={logos} />
         </div>
         <p className="max-w-200 mx-auto">
@@ -163,7 +165,7 @@ function ThePondModal() {
       {/* Core features */}
       <div>
         <h3>THE WEBSITES CORE FEATURES:</h3>
-        <div className="mt-6 flex flex-col gap-80 text-left">
+        <div className="mt-6 flex flex-col gap-20 text-left">
           {/* First section */}
           <div className="flex gap-20 items-center justify-center">
             <img
@@ -289,7 +291,7 @@ function SmilingSoleReflexologyModal() {
       {/* Technology stack */}
       <div>
         <h3>THE TECHNOLOGY STACK:</h3>
-        <div className="my-6 flex justify-center items-center gap-10">
+        <div className="my-6 flex flex-wrap justify-center items-center gap-10">
           <TechnologyStackIcons logos={logos} />
         </div>
         <p className="max-w-200 mx-auto">
@@ -303,7 +305,7 @@ function SmilingSoleReflexologyModal() {
       {/* Core features */}
       <div>
         <h3>THE WEBSITES CORE FEATURES:</h3>
-        <div className="mt-6 flex flex-col gap-80 text-left">
+        <div className="mt-6 flex flex-col gap-20 text-left">
           {/* First section */}
           <div className="flex gap-20 items-center justify-center">
             <img
@@ -420,7 +422,7 @@ function CobaltDevelopmentModal() {
       {/* Technology stack */}
       <div>
         <h3>THE TECHNOLOGY STACK:</h3>
-        <div className="my-6 flex justify-center items-center gap-10">
+        <div className="my-6 flex flex-wrap justify-center items-center gap-10">
           <TechnologyStackIcons logos={logos} />
         </div>
         <p className="max-w-200 mx-auto">
@@ -432,7 +434,7 @@ function CobaltDevelopmentModal() {
       {/* Core features */}
       <div>
         <h3>THE WEBSITES CORE FEATURES:</h3>
-        <div className="mt-6 flex flex-col gap-80 text-left">
+        <div className="mt-6 flex flex-col gap-20 text-left">
           {/* First section */}
           <div className="flex gap-20 items-center justify-center">
             <img
@@ -527,7 +529,7 @@ function CobaltConstructionModal() {
       {/* Technology stack */}
       <div>
         <h3>THE TECHNOLOGY STACK:</h3>
-        <div className="my-6 flex justify-center items-center gap-10">
+        <div className="my-6 flex flex-wrap justify-center items-center gap-10">
           <TechnologyStackIcons logos={logos} />
         </div>
         <p className="max-w-200 mx-auto">
@@ -538,7 +540,7 @@ function CobaltConstructionModal() {
       {/* Core features */}
       <div>
         <h3>THE WEBSITES CORE FEATURES:</h3>
-        <div className="mt-6 flex flex-col gap-80 text-left">
+        <div className="mt-6 flex flex-col gap-20 text-left">
           {/* First section */}
           <div className="flex gap-20 items-center justify-center">
             <img
@@ -632,7 +634,7 @@ function CobaltHubModal() {
       {/* Technology stack */}
       <div>
         <h3>THE TECHNOLOGY STACK:</h3>
-        <div className="my-6 flex justify-center items-center gap-10">
+        <div className="my-6 flex flex-wrap justify-center items-center gap-10">
           <TechnologyStackIcons logos={logos} />
         </div>
         <p className="max-w-200 mx-auto">
@@ -643,7 +645,7 @@ function CobaltHubModal() {
       {/* Core features */}
       <div>
         <h3>THE WEBSITES CORE FEATURES:</h3>
-        <div className="mt-6 flex flex-col gap-80 text-left">
+        <div className="mt-6 flex flex-col gap-20 text-left">
           {/* First section */}
           <div className="flex gap-20 items-center justify-center">
             <img
@@ -719,7 +721,7 @@ function CobaltAluminiumModal() {
       {/* Technology stack */}
       <div>
         <h3>THE TECHNOLOGY STACK:</h3>
-        <div className="my-6 flex justify-center items-center gap-10">
+        <div className="my-6 flex flex-wrap justify-center items-center gap-10">
           {logos.map((logo) => (
             <img key={logo} src={logo} alt="SVG of web technology." />
           ))}
@@ -732,7 +734,7 @@ function CobaltAluminiumModal() {
       {/* Core features */}
       <div>
         <h3>THE WEBSITES CORE FEATURES:</h3>
-        <div className="mt-6 flex flex-col gap-80 text-left">
+        <div className="mt-6 flex flex-col gap-20 text-left">
           {/* First section */}
           <div className="flex gap-20 items-center justify-center">
             <img
@@ -857,7 +859,7 @@ function ModalProvider({ children }: modalProviderProps) {
     : null;
 
   return (
-    <ModalContext.Provider value={{ openModal, closeModal }}>
+    <ModalContext.Provider value={{ openModal, closeModal, modalState }}>
       {children}
       <AnimatePresence>
         {modalState.name && ModalComponent && (

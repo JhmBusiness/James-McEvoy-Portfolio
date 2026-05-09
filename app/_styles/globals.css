@@ -21,7 +21,7 @@
   }
 
   h3 {
-    @apply text-[32px] font-semibold;
+    @apply text-3xl lg:text-[32px] font-semibold;
   }
 
   h4 {
@@ -41,6 +41,10 @@
   input,
   textarea {
     @apply caret-accent text-xl pointer-events-auto text-center placeholder:text-grey;
+  }
+
+  #modal p {
+    @apply text-base lg:text-xl;
   }
 }
 

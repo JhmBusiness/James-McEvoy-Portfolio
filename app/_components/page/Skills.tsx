@@ -24,7 +24,7 @@ export default function Skills() {
       className="fixed inset-0 z-10 flex flex-col items-center justify-center px-6 text-center pointer-events-none"
     >
       <div className="max-w-3xl">
-        <motion.h1>Skills</motion.h1>
+        <h1>Skills</h1>
 
         <p className="text-xl text-grey leading-relaxed mb-10 mt-6">
           I am an aspiring Full-stack developer, who brings concept to reality.
