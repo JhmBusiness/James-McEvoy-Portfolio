@@ -9,6 +9,8 @@ import { useEffect, useRef, useState } from "react";
 import Form from "./Form";
 import { useMediaQuery } from "usehooks-ts";
 
+gsap.registerPlugin(useGSAP, TextPlugin, ScrambleTextPlugin);
+
 export default function Terminal() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [loadBarPercent, setLoadBarPercent] = useState(0);
@@ -17,7 +19,8 @@ export default function Terminal() {
   const [chatBotStage, setChatBotStage] = useState(0);
   const [highestChatBotStage, setHighestChatBotStage] = useState(0);
   const isMobile = useMediaQuery("(max-width: 640px)");
-  const isTerminalVisible = scrollProgress >= 1;
+  const isTerminalVisible = scrollProgress >= 0.98;
+  const [hasStarted, setHasStarted] = useState(false);
 
   // Handles scrollProgress
   useEffect(() => {
@@ -25,7 +28,7 @@ export default function Terminal() {
       // Calculate how far we've scrolled (0 to 1)
       const totalHeight =
         document.documentElement.scrollHeight - window.innerHeight;
-      const progress = window.scrollY / totalHeight;
+      const progress = Math.min(window.scrollY / totalHeight, 1);
       setScrollProgress(progress);
     };
 
@@ -37,7 +40,6 @@ export default function Terminal() {
     };
   }, []);
 
-  gsap.registerPlugin(useGSAP, TextPlugin, ScrambleTextPlugin);
   const loadingScreen = useRef(null);
   const loadingBar = useRef(null);
   const textRef = useRef(null);
@@ -48,7 +50,8 @@ export default function Terminal() {
   useGSAP(
     () => {
       // Only run if the progress is 1 AND the element exists
-      if (scrollProgress === 1 && loadingScreen.current) {
+      if (scrollProgress >= 0.98 && !hasStarted && loadingScreen.current) {
+        setHasStarted(true);
         const tl = gsap.timeline();
 
         // Ensure loadbar always starts from 0.
@@ -144,7 +147,7 @@ export default function Terminal() {
         };
       }
     },
-    { scope: loadingScreen, dependencies: [scrollProgress] },
+    { scope: loadingScreen, dependencies: [scrollProgress, hasStarted] },
   );
 
   // Chatbot animations

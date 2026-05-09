@@ -29,7 +29,7 @@ export default function Rig({
       // Calculate how far we've scrolled (0 to 1)
       const totalHeight =
         document.documentElement.scrollHeight - window.innerHeight;
-      const progress = window.scrollY / totalHeight;
+      const progress = Math.min(window.scrollY / totalHeight, 1);
       setScrollProgress(progress);
     };
 
@@ -151,7 +151,7 @@ export default function Rig({
     );
 
     // Mouse parallax
-    if (scrollProgress !== 1 && !isMobile) {
+    if (scrollProgress <= 0.98 && !isMobile) {
       state.camera.position.x = THREE.MathUtils.lerp(
         state.camera.position.x,
         state.pointer.x * 1.5,
