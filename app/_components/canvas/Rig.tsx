@@ -37,6 +37,19 @@ export default function Rig({
     return () => window.removeEventListener("scroll", handleScroll);
   }, [setScrollProgress]);
 
+  // Prevents scroll history and restarts from start of page.
+  useEffect(() => {
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+
+    window.scrollTo(0, 0);
+
+    requestAnimationFrame(() => {
+      setScrollProgress(0);
+    });
+  }, []);
+
   function scrollToSection(section: number) {
     const totalHeight =
       document.documentElement.scrollHeight - window.innerHeight;
