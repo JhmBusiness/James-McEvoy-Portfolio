@@ -21,18 +21,18 @@ export default function Skills() {
   return (
     <motion.section
       style={{ opacity, scale, y }}
-      className="fixed inset-0 z-10 flex flex-col items-center justify-center px-6 text-center pointer-events-none"
+      className="fixed inset-0 z-10 flex flex-col items-center justify-center px-4 sm:px-20 text-center pointer-events-none"
     >
       <div className="max-w-3xl">
         <h1>Skills</h1>
 
-        <p className="text-xl text-grey leading-relaxed mb-10 mt-6">
+        <p className="px-4 sm:px-0 text-base lg:text-xl text-grey leading-relaxed mb-10 mt-6">
           I am an aspiring Full-stack developer, who brings concept to reality.
-          <br />
-          Below is my ever-growing list of technologies I specialise in.
+          <br className="hidden lg:flex" /> Below is my ever-growing list of
+          technologies I specialise in.
         </p>
 
-        <div className="gap-8 items-center flex flex-wrap justify-center">
+        <div className="grid grid-cols-4 gap-4 sm:gap-6 sm:grid-cols-6 md:grid-cols-7 lg:gap-8 items-center lg:flex flex-wrap justify-center">
           {skillData.map((skill, index) => (
             <SkillIcon key={skill.id} {...skill} />
           ))}
