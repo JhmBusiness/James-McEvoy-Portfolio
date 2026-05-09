@@ -7,6 +7,12 @@ import HeroMesh from "./HeroMesh";
 import ProjectsContainer from "./ProjectsContainer";
 import Rig from "./Rig";
 import TerminalBackground from "./TerminalBackground";
+import {
+  Bloom,
+  EffectComposer,
+  Noise,
+  Vignette,
+} from "@react-three/postprocessing";
 
 export default function Scene() {
   const [activeId, setActiveId] = useState<number | null>(null);
@@ -29,6 +35,11 @@ export default function Scene() {
         <ambientLight intensity={0.5} />
         <Environment near={1} far={1000} resolution={256} preset="city" />
         <pointLight position={[10, 10, 10]} intensity={1.5} />
+
+        <EffectComposer>
+          <Noise opacity={0.03} />
+          <Vignette eskil={false} offset={0.15} darkness={0.8} />
+        </EffectComposer>
 
         {/* Space Background */}
         <Stars
