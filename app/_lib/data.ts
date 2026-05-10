@@ -182,3 +182,16 @@ export const chatBotScript: ChatBotScriptProps[] = [
 export const SERVICEID = "service_rfuyf8j";
 export const TEMPLATEID = "template_a0hgqf8";
 export const PUBLICKEY = "lTkc31QPLPhpzzuGE";
+
+interface HudScriptProps {
+  id: number;
+  label: string;
+}
+
+export const hudScript: HudScriptProps[] = [
+  { id: 1, label: "Welcome to JHMCANVAS" },
+  { id: 2, label: "Section 1/4: Home" },
+  { id: 3, label: "Section 2/4: Projects" },
+  { id: 4, label: "Section 3/4: Skills" },
+  { id: 5, label: "Section 4/4: Contact Terminal" },
+];

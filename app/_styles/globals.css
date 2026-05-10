@@ -28,6 +28,10 @@
     @apply text-2xl font-semibold;
   }
 
+  h5 {
+    @apply text-xl font-medium;
+  }
+
   p,
   ul,
   li {
@@ -99,4 +103,10 @@ input:focus {
   to {
     visibility: hidden;
   }
+}
+
+.hud-title-bg {
+  background-image: url("/hud/top-middle.svg");
+  background-repeat: no-repeat;
+  background-position: center;
 }

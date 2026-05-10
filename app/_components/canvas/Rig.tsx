@@ -22,7 +22,7 @@ export default function Rig({
 }: RigProps) {
   // ModalState
   const { modalState } = useModal();
-  const scrollThreshold = isMobile ? 0.98 : 1;
+  const scrollThreshold = isMobile ? 0.98 : 0.999;
 
   // Desktop scroll listener
   useEffect(() => {

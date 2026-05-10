@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat, Source_Sans_3 } from "next/font/google";
 import Scene from "./_components/canvas/Scene";
+import HudContainer from "./_components/hud/HudContainer";
 import { ModalProvider } from "./_context/ModalContext";
 import "./_styles/globals.css";
 
@@ -32,6 +33,9 @@ export default function RootLayout({
             <Scene />
           </ModalProvider>
         </div>
+
+        {/* HUD */}
+        <HudContainer />
 
         <main
           id="root"

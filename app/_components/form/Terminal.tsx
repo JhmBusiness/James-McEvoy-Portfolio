@@ -19,7 +19,7 @@ export default function Terminal() {
   const [chatBotStage, setChatBotStage] = useState(0);
   const [highestChatBotStage, setHighestChatBotStage] = useState(0);
   const isMobile = useMediaQuery("(max-width: 640px)");
-  const scrollThreshold = isMobile ? 0.98 : 1;
+  const scrollThreshold = isMobile ? 0.98 : 0.999;
   const isTerminalVisible = scrollProgress >= scrollThreshold;
   const [hasStarted, setHasStarted] = useState(false);
 
