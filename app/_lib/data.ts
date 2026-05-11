@@ -5,13 +5,19 @@ export interface ProjectMonolithDataProps {
   title: string;
   modalName: ModalName;
   description: string;
+  pillarImgDesktop: string;
+  pillarImgMobile: string;
   heroImg: string;
   firstImg?: string;
   secondImg?: string;
   thirdImg?: string;
   liveUrl: string;
-  logos: string[];
+  icons: string[];
   brandColor: string;
+  date: string;
+  number: string;
+  tagDescription: string;
+  projectType: string;
 }
 
 export const projectData: ProjectMonolithDataProps[] = [
@@ -21,12 +27,14 @@ export const projectData: ProjectMonolithDataProps[] = [
     modalName: "the-pond",
     description:
       "The Pond is a habit tracker built with a social heart. It begins at the dashboard. Users create habits and track their progress. When a user hits a milestone, they share it. These posts appear on a global feed. Others can like or comment. It turns personal discipline into a shared experience.",
+    pillarImgDesktop: "/projects/the-pond/monolith.webp",
+    pillarImgMobile: "/projects/the-pond/monolith-mobile.png",
     heroImg: "/projects/the-pond/dashboard.png",
     firstImg: "/projects/the-pond/first-img.png",
     secondImg: "/projects/the-pond/second-img.png",
     thirdImg: "/projects/the-pond/third-img.png",
     liveUrl: "https://thepond-by-jhm.netlify.app/",
-    logos: [
+    icons: [
       "/skills/nextjs.svg",
       "/skills/typescript.svg",
       "/skills/tailwind.svg",
@@ -36,6 +44,10 @@ export const projectData: ProjectMonolithDataProps[] = [
       "/skills/apexCharts.svg",
     ],
     brandColor: "#5A9DBE",
+    date: "2026",
+    number: "01",
+    tagDescription: "WEB APPLICATION",
+    projectType: "PERSONAL PROJECT",
   },
   {
     id: 2,
@@ -43,12 +55,14 @@ export const projectData: ProjectMonolithDataProps[] = [
     modalName: "smiling-sole-reflexology",
     description:
       "Smiling Sole Reflexology is a website built for both clients and employees,  featuring a built in dashboard to manage business inquiries.",
+    pillarImgDesktop: "/projects/smiling-sole-reflexology/monolith.webp",
+    pillarImgMobile: "/projects/smiling-sole-reflexology/monolith-mobile.png",
     heroImg: "/projects/smiling-sole-reflexology/hero-img.png",
     firstImg: "/projects/smiling-sole-reflexology/first-img.png",
     secondImg: "/projects/smiling-sole-reflexology/second-img.png",
     thirdImg: "/projects/smiling-sole-reflexology/third-img.png",
     liveUrl: "https://smilingsolereflexology.com/",
-    logos: [
+    icons: [
       "/skills/nextjs.svg",
       "/skills/tailwind.svg",
       "/skills/framer.svg",
@@ -56,6 +70,10 @@ export const projectData: ProjectMonolithDataProps[] = [
       "/skills/nodejs.svg",
     ],
     brandColor: "#5A516D",
+    date: "2025",
+    number: "02",
+    tagDescription: "BUSINESS PLATFORM",
+    projectType: "CLIENT PROJECT",
   },
   {
     id: 3,
@@ -63,18 +81,24 @@ export const projectData: ProjectMonolithDataProps[] = [
     modalName: "cobalt-development",
     description:
       "Cobalt Development is a subsidiary company of Cobalt Group. The client wanted a website that followed a matching theme to their other websites; except that this one will both introduce the company and showcase their work.",
+    pillarImgDesktop: "/projects/cobalt-development/monolith.webp",
+    pillarImgMobile: "/projects/cobalt-development/monolith-mobile.png",
     heroImg: "/projects/cobalt-development/hero-img.png",
     firstImg: "/projects/cobalt-development/first-img.png",
     secondImg: "/projects/cobalt-development/second-img.png",
     thirdImg: "",
     liveUrl: "https://cobaltpl.com/cobalt-development/",
-    logos: [
+    icons: [
       "/skills/nextjs.svg",
       "/skills/tailwind.svg",
       "/skills/framer.svg",
       "/skills/nodejs.svg",
     ],
     brandColor: "#396A39",
+    date: "2025",
+    number: "03",
+    tagDescription: "BUSINESS PORTFOLIO",
+    projectType: "CLIENT PROJECT",
   },
   {
     id: 4,
@@ -82,12 +106,18 @@ export const projectData: ProjectMonolithDataProps[] = [
     modalName: "cobalt-construction",
     description:
       "Cobalt Construction is a subsidiary company of Cobalt Group. It was built to showcase commercial and residential builds using both projects and an integrated map.",
+    pillarImgDesktop: "/projects/cobalt-construction/monolith.webp",
+    pillarImgMobile: "/projects/cobalt-construction/monolith-mobile.png",
     heroImg: "/projects/cobalt-construction/hero-img.png",
     firstImg: "/projects/cobalt-construction/first-img.png",
     secondImg: "/projects/cobalt-construction/second-img.png",
     liveUrl: "https://cobaltpl.com/cobalt-construction/",
-    logos: ["/skills/html.svg", "/skills/css.svg", "/skills/javaScript.svg"],
+    icons: ["/skills/html.svg", "/skills/css.svg", "/skills/javaScript.svg"],
     brandColor: "#1b4a90",
+    date: "2024",
+    number: "04",
+    tagDescription: "PROJECT SHOWCASE",
+    projectType: "CLIENT PROJECT",
   },
   {
     id: 5,
@@ -95,13 +125,19 @@ export const projectData: ProjectMonolithDataProps[] = [
     modalName: "cobalt-hub",
     description:
       "Cobalt Hub was made to group all subsidiary sites of Cobalt Group. Each website is featured here with a short description of what each subsidiary company specialises in.",
+    pillarImgDesktop: "/projects/cobalt-hub/monolith.webp",
+    pillarImgMobile: "/projects/cobalt-hub/monolith-mobile.png",
     heroImg: "/projects/cobalt-hub/hero-img.png",
     firstImg: "/projects/cobalt-hub/first-img.png",
     secondImg: "",
     thirdImg: "",
     liveUrl: "https://cobaltpl.com/",
-    logos: ["/skills/html.svg", "/skills/css.svg", "/skills/javaScript.svg"],
+    icons: ["/skills/html.svg", "/skills/css.svg", "/skills/javaScript.svg"],
     brandColor: "#FFFFFF",
+    date: "2024",
+    number: "05",
+    tagDescription: "BUSINESS HUB",
+    projectType: "CLIENT PROJECT",
   },
   {
     id: 6,
@@ -109,13 +145,19 @@ export const projectData: ProjectMonolithDataProps[] = [
     modalName: "cobalt-aluminium",
     description:
       "Cobalt Aluminium, a subsidiary of Cobalt Group was my first client project that I took on. This project features a company that sells windows, doors, and their accessories. The client needed a website to sell these products, and show their technical details.",
+    pillarImgDesktop: "/projects/cobalt-aluminium/monolith.webp",
+    pillarImgMobile: "/projects/cobalt-aluminium/monolith-mobile.png",
     heroImg: "/projects/cobalt-aluminium/hero-img.png",
     firstImg: "/projects/cobalt-aluminium/first-img.png",
     secondImg: "/projects/cobalt-aluminium/second-img.png",
     thirdImg: "/projects/cobalt-aluminium/third-img.png",
     liveUrl: "https://cobaltpl.com/cobalt-aluminium/",
-    logos: ["/skills/html.svg", "/skills/css.svg", "/skills/javaScript.svg"],
+    icons: ["/skills/html.svg", "/skills/css.svg", "/skills/javaScript.svg"],
     brandColor: "#fa7f20",
+    date: "2024",
+    number: "06",
+    tagDescription: "PRODUCT SHOWCASE",
+    projectType: "CLIENT PROJECT",
   },
 ];
 

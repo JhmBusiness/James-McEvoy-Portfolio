@@ -1,5 +1,4 @@
 "use client";
-
 import { chatBotScript, loadingScreenData } from "@/app/_lib/data";
 import { useGSAP } from "@gsap/react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -113,7 +112,7 @@ export default function Terminal() {
               width: "65%",
               ease: "cubic-bezier(0.65, 0, 0.35, 1)",
               onUpdate: function () {
-                const currentPercent = 20 + Math.round(this.progress() * 30);
+                const currentPercent = 20 + Math.round(this.progress() * 45);
                 setLoadBarPercent(currentPercent);
               },
             },

@@ -1,7 +1,8 @@
 import { ModalName } from "@/app/_context/ModalContext";
 import { ProjectMonolithDataProps } from "@/app/_lib/data";
-import { Edges, Text } from "@react-three/drei";
+import { Edges, Image, RoundedBoxGeometry, Text } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
+import { hover } from "framer-motion";
 import {
   Dispatch,
   SetStateAction,
@@ -33,8 +34,16 @@ export default function ProjectMonolith({
   isMobile,
   scrollProgress,
   setScrollProgress,
+  pillarImgDesktop,
+  pillarImgMobile,
+  date,
+  number,
+  tagDescription,
+  projectType,
+  icons,
 }: ProjectMonolithProps) {
   const groupRef = useRef<THREE.Group>(null!);
+  const materialRef = useRef<THREE.MeshStandardMaterial>(null!);
   const [hovered, setHovered] = useState(false);
 
   const localMouse = useRef(new THREE.Vector2(0, 0));
@@ -128,13 +137,16 @@ export default function ProjectMonolith({
     }
   });
 
+  const spacing = 0.6;
+  const totalWidth = (icons.length - 1) * spacing;
+
   return (
     <group
       ref={groupRef}
       onPointerMove={(e) => {
         if (hovered) {
-          localMouse.current.x = (e.uv!.x - 0.5) * 2;
-          localMouse.current.y = (e.uv!.y - 0.5) * 2;
+          localMouse.current.x = (e.uv!.x - 0.5) * 0.2;
+          localMouse.current.y = (e.uv!.y - 0.5) * 0.2;
         }
       }}
       onPointerOver={() => setHovered(true)}
@@ -147,14 +159,25 @@ export default function ProjectMonolith({
         handleProjectClick(id, modalName);
       }}
     >
+      <pointLight
+        position={[0, 0, 0]}
+        intensity={hovered ? 1000 : 0}
+        color={brandColor}
+        distance={10}
+        decay={2}
+      />
       <mesh>
-        <boxGeometry args={isMobile ? [5, 6, 0.2] : [6, 9, 0.2]} />
+        <RoundedBoxGeometry
+          radius={0.2}
+          args={isMobile ? [5, 6, 0.2] : [6, 9, 0.8]}
+        />
         <meshStandardMaterial
+          // color={brandColor}
           color="#0a0a0a"
           metalness={1}
           roughness={0.15}
           transparent={true}
-          opacity={0.8}
+          opacity={0.98}
         />
         <Edges threshold={15} color={brandColor}>
           <meshBasicMaterial color={brandColor} toneMapped={false} />
@@ -162,29 +185,161 @@ export default function ProjectMonolith({
       </mesh>
 
       <mesh position={[0, 0, -0.01]}>
-        <boxGeometry args={isMobile ? [4.8, 5.8, 0.1] : [5.8, 8.8, 0.1]} />
+        <RoundedBoxGeometry
+          radius={0.2}
+          args={isMobile ? [4.8, 5.8, 0.1] : [5.8, 8.8, 0.7]}
+        />
         <meshStandardMaterial
-          color="#000000"
-          transparent
-          opacity={0.4}
+          color="#0a0a0a"
+          // color={brandColor}
+          transparent={true}
+          opacity={1}
           metalness={1}
-          roughness={0}
+          roughness={0.2}
         />
       </mesh>
 
+      {/* Title */}
       <Text
         maxWidth={5}
-        fontSize={0.6}
+        fontSize={0.5}
+        fontWeight={900}
         textAlign="center"
-        position={[0, 0, 0.22]}
-        color="white"
+        position={isMobile ? [0, 1.4, 0.41] : [0, 3.2, 0.41]}
+        // position={isMobile ? [0, 1.4, 0.41] : [0, 0, 0.41]}
+        color="#fafafa"
+        font="/fonts/montserrat-bold.ttf"
       >
         {title.toUpperCase()}
         <meshStandardMaterial
-          emissive="white"
-          emissiveIntensity={hovered ? 0.5 : 0}
+          emissive={hovered ? brandColor : "#fafafa"}
+          // emissiveIntensity={hovered ? 2 : 0}
+          emissiveIntensity={hovered ? 2 : 0.8}
         />
       </Text>
+
+      {/* Three text */}
+      {!isMobile && (
+        <>
+          <Text
+            maxWidth={5}
+            fontSize={0.35}
+            textAlign="center"
+            // position={[-2.53, 2, 0.41]}
+            position={[0, 2.1, 0.41]}
+            anchorX="center"
+            color="#fafafa"
+            font="/fonts/sourcesans3-regular.ttf"
+          >
+            Date: {date}
+          </Text>
+          <Text
+            maxWidth={5}
+            fontSize={0.35}
+            textAlign="center"
+            position={[0, 1.5, 0.41]}
+            anchorX="center"
+            color="#fafafa"
+            font="/fonts/sourcesans3-regular.ttf"
+          >
+            {tagDescription}
+          </Text>
+          <Text
+            maxWidth={5}
+            fontSize={0.35}
+            textAlign="center"
+            position={[0, 0.9, 0.41]}
+            anchorX="center"
+            color="#fafafa"
+            font="/fonts/sourcesans3-regular.ttf"
+          >
+            {projectType}
+          </Text>
+        </>
+      )}
+
+      {/* Skill Icons */}
+      {!isMobile && (
+        <>
+          {/* <group position={[-2, 0, 0.1]}>
+            {icons.map((icon, index) => (
+              <Image
+                key={icon}
+                url={icon}
+                position={[0 + index * 0.6, 0, 0.41]}
+                scale={[0.4, 0.4]}
+                transparent
+              />
+            ))}
+          </group> */}
+          <group position={[0, 0.16, 0.1]}>
+            {icons.map((icon, index) => (
+              <Image
+                key={icon}
+                url={icon}
+                position={[index * spacing - totalWidth / 2, 0, 0.41]}
+                scale={[0.4, 0.4]}
+                transparent
+              />
+            ))}
+          </group>
+        </>
+      )}
+
+      {/* Website img */}
+      {pillarImgDesktop && !isMobile && (
+        <Image
+          url={pillarImgDesktop}
+          position={[0, -1.6, 0.41]}
+          scale={[5, 2.35]}
+          grayscale={hovered ? 0 : 0.05}
+        />
+      )}
+      {pillarImgMobile && isMobile && (
+        <Image
+          url={pillarImgMobile}
+          position={[0, -1.25, 0.41]}
+          scale={[4.34, 2.9]}
+        />
+      )}
+
+      {/* Bar */}
+      {!isMobile && (
+        <mesh position={[0, -3.2, 0.41]}>
+          <planeGeometry args={[5, 0.01]} />
+          <meshBasicMaterial color="#fafafa" />
+        </mesh>
+      )}
+
+      {/* Monolith number */}
+      {!isMobile && (
+        <Text
+          maxWidth={5}
+          fontSize={0.4}
+          fontWeight={900}
+          textAlign="left"
+          position={[-2.2, -3.8, 0.41]}
+          // position={isMobile ? [0, 1.4, 0.41] : [0, 0, 0.41]}
+          color={brandColor}
+          font="/fonts/montserrat-semibold.ttf"
+        >
+          {number}
+        </Text>
+      )}
+      {!isMobile && (
+        <Text
+          maxWidth={5}
+          fontSize={0.4}
+          fontWeight={900}
+          textAlign="left"
+          position={[-1.4, -3.8, 0.41]}
+          // position={isMobile ? [0, 1.4, 0.41] : [0, 0, 0.41]}
+          color="#fafafa"
+          font="/fonts/montserrat-semibold.ttf"
+        >
+          / 06
+        </Text>
+      )}
     </group>
   );
 }

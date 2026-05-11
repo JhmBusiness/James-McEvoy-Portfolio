@@ -3,7 +3,7 @@
 import { useModal } from "@/app/_context/ModalContext";
 import { IsMobile } from "@/app/_lib/interfaces";
 import { useFrame } from "@react-three/fiber";
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import * as THREE from "three";
 
 interface RigProps extends IsMobile {
@@ -22,7 +22,7 @@ export default function Rig({
 }: RigProps) {
   // ModalState
   const { modalState } = useModal();
-  const scrollThreshold = isMobile ? 0.98 : 0.999;
+  const scrollThreshold = isMobile ? 0.98 : 0.75;
 
   // Desktop scroll listener
   useEffect(() => {
@@ -67,7 +67,7 @@ export default function Rig({
     });
   }
 
-  // Mobile swipe listener and funcs
+  // Mobile swipe listener and funcs - START
   function handleSwipeUp() {
     setCurrentSection((prev) => {
       const next = Math.min(prev + 1, 3);
@@ -135,7 +135,9 @@ export default function Rig({
       window.removeEventListener("touchend", handleTouchEnd);
     };
   }, [isMobile, modalState]);
+  // Mobile swipe listener and funcs - END
 
+  // Rigs core function
   useFrame((state) => {
     const startZ = 8;
     const endZ = isMobile ? -80 : -140;
@@ -177,6 +179,57 @@ export default function Rig({
       );
     }
   });
+
+  // Terminal zoom
+  const hasScrolledToBottom = useRef(false);
+
+  function lockScroll() {
+    document.body.style.overflow = "hidden";
+  }
+
+  function unlockScroll() {
+    document.body.style.overflow = "auto";
+  }
+
+  function scrollToBottom(duration = 1600) {
+    if (isMobile) return;
+    const start = window.scrollY;
+
+    const target = document.documentElement.scrollHeight - window.innerHeight;
+
+    const distance = target - start;
+
+    const startTime = performance.now();
+
+    lockScroll();
+
+    function animate(currentTime: number) {
+      const elapsed = currentTime - startTime;
+
+      const progress = Math.min(elapsed / duration, 1);
+
+      // Exponential zoom
+      const ease = 1 - Math.pow(1 - progress, 3);
+
+      window.scrollTo(0, start + distance * ease);
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        unlockScroll();
+      }
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  useEffect(() => {
+    if (scrollProgress >= 0.75 && !hasScrolledToBottom.current) {
+      hasScrolledToBottom.current = true;
+
+      scrollToBottom(1600);
+    }
+  }, [scrollProgress]);
 
   return null;
 }

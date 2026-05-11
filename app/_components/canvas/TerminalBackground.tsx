@@ -24,7 +24,7 @@ export default function TerminalBackground() {
     const progress = Math.min(window.scrollY / totalHeight, 1);
 
     const startSize = 0.1;
-    const endSize = 0.8;
+    const endSize = 1;
     const growthTrigger = 0.75;
 
     let currentSize = startSize;
