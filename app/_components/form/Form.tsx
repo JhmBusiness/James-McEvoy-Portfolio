@@ -102,7 +102,7 @@ export default function Form({
               className="absolute mb-10 border-b border-accent max-w-full overflow-scroll"
             >
               <input
-                autoFocus
+                // autoFocus
                 id="name"
                 style={{ width: `${nameInputWidth}px` }}
                 value={userNameInput}
