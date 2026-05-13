@@ -144,7 +144,7 @@ export const projectData: ProjectMonolithDataProps[] = [
     title: "COBALT ALUMINIUM",
     modalName: "cobalt-aluminium",
     description:
-      "Cobalt Aluminium, a subsidiary of Cobalt Group was my first client project that I took on. This project features a company that sells windows, doors, and their accessories. The client needed a website to sell these products, and show their technical details.",
+      "Cobalt Aluminium, a subsidiary of Cobalt Group, was my first client project that I took on. This project features a company that sells windows, doors, and their accessories. The client needed a website to sell these products, and show their technical details.",
     pillarImgDesktop: "/projects/cobalt-aluminium/monolith.webp",
     pillarImgMobile: "/projects/cobalt-aluminium/monolith-mobile.png",
     heroImg: "/projects/cobalt-aluminium/hero-img.png",

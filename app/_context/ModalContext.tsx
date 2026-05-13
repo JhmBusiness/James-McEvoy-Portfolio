@@ -370,7 +370,7 @@ function SmilingSoleReflexologyModal() {
         <h3>WHAT I&apos;VE LEARNT:</h3>
         <p className="max-w-200 mx-auto mt-6 pb-10">
           This was my first time creating a project that integrated the
-          front-end and back-end. There were a few hiccups integrating Supabase
+          front-end and back-end. There were a few setbacks integrating Supabase
           Auth with Next.js Middleware, but the documentation was clear and
           concise, which resolved any issues quickly.
         </p>
@@ -587,8 +587,8 @@ function CobaltConstructionModal() {
       <div className="mb-10 sm:mb-20 lg:mb-40 flex justify-center items-center flex-col">
         <h3>WHAT I&apos;VE LEARNT:</h3>
         <p className="max-w-200 mx-auto mt-6 pb-10">
-          This project was great for practising standard CSS. Aside from that,
-          there wasn&apos;t much needed to be learnt.
+          Through this project, I was able to build up upon my DOM manipulation,
+          and standard CSS.
         </p>
         <Link
           href={liveUrl}
@@ -676,8 +676,8 @@ function CobaltHubModal() {
       <div className="mb-10 sm:mb-20 lg:mb-40 flex justify-center items-center flex-col">
         <h3>WHAT I&apos;VE LEARNT:</h3>
         <p className="max-w-200 mx-auto mt-6 pb-10">
-          This project was great for practising standard CSS. Aside from that,
-          there wasn&apos;t much needed to be learnt.
+          Through this project, I was able to build up upon my DOM manipulation,
+          and standard CSS.
         </p>
         <Link
           href={liveUrl}
@@ -808,14 +808,14 @@ function CobaltAluminiumModal() {
         <h3>WHAT I&apos;VE LEARNT:</h3>
         <p className="max-w-200 mx-auto mt-6 pb-10">
           As this was my first project, there was a lot to learn. The one I like
-          to look back and laugh at is that every product is its own HTML page.
+          to look back and laugh at because every product had its own HTML page.
           It makes me really wish that I knew React.js back when I was building
           it.
           <br />
           <br />
           My second criticism to myself is that scaling down icons and font for
           the contact form would have made it look a lot cleaner. There are a
-          few more things, but I’ll leave it up to you to spot them.
+          few more things, but I&apos;ll leave it up to you to spot them.
         </p>
         <Link
           href={liveUrl}
