@@ -229,7 +229,7 @@ function ThePondModal() {
       </div>
 
       {/* What I've learnt */}
-      <div className="h-[calc(100dvh-80px)] flex justify-center items-center flex-col">
+      <div className="mb-10 sm:mb-20 lg:mb-40 flex justify-center items-center flex-col">
         <h3>WHAT I&apos;VE LEARNT:</h3>
         <p className="max-w-200 mx-auto mt-6 pb-10">
           This project pushed my development forward. I explored how a backend
@@ -366,7 +366,7 @@ function SmilingSoleReflexologyModal() {
       </div>
 
       {/* What I've learnt */}
-      <div className="h-[calc(100dvh-80px)] flex justify-center items-center flex-col">
+      <div className="mb-10 sm:mb-20 lg:mb-40 flex justify-center items-center flex-col">
         <h3>WHAT I&apos;VE LEARNT:</h3>
         <p className="max-w-200 mx-auto mt-6 pb-10">
           This was my first time creating a project that integrated the
@@ -474,7 +474,7 @@ function CobaltDevelopmentModal() {
       </div>
 
       {/* What I've learnt */}
-      <div className="h-[calc(100dvh-80px)] flex justify-center items-center flex-col">
+      <div className="mb-10 sm:mb-20 lg:mb-40 flex justify-center items-center flex-col">
         <h3>WHAT I&apos;VE LEARNT:</h3>
         <p className="max-w-200 mx-auto mt-6 pb-10">
           There is one main thing I learnt from this project, and that was
@@ -584,7 +584,7 @@ function CobaltConstructionModal() {
       </div>
 
       {/* What I've learnt */}
-      <div className="h-[calc(100dvh-80px)] flex justify-center items-center flex-col">
+      <div className="mb-10 sm:mb-20 lg:mb-40 flex justify-center items-center flex-col">
         <h3>WHAT I&apos;VE LEARNT:</h3>
         <p className="max-w-200 mx-auto mt-6 pb-10">
           This project was great for practising standard CSS. Aside from that,
@@ -673,7 +673,7 @@ function CobaltHubModal() {
       </div>
 
       {/* What I've learnt */}
-      <div className="h-[calc(100dvh-80px)] flex justify-center items-center flex-col">
+      <div className="mb-10 sm:mb-20 lg:mb-40 flex justify-center items-center flex-col">
         <h3>WHAT I&apos;VE LEARNT:</h3>
         <p className="max-w-200 mx-auto mt-6 pb-10">
           This project was great for practising standard CSS. Aside from that,
@@ -804,7 +804,7 @@ function CobaltAluminiumModal() {
       </div>
 
       {/* What I've learnt */}
-      <div className="h-[calc(100dvh-80px)] flex justify-center items-center flex-col">
+      <div className="mb-10 sm:mb-20 lg:mb-40 flex justify-center items-center flex-col">
         <h3>WHAT I&apos;VE LEARNT:</h3>
         <p className="max-w-200 mx-auto mt-6 pb-10">
           As this was my first project, there was a lot to learn. The one I like

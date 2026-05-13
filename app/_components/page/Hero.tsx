@@ -19,11 +19,11 @@ export default function Hero() {
     >
       <div className="z-20 text-center pointer-events-none">
         <h1 className="pointer-events-none">JAMES MCEVOY</h1>
-        <p className="hidden lg:block mt-4 pointer-events-none text-grey">
-          Scroll to start exploring.
+        <p className="hidden lg:block mt-4 pointer-events-none text-grey animate-pulse font-semibold">
+          [ CONTROLS: W, ⬆ / S, ⬇ / SCROLL ]
         </p>
-        <p className="lg:hidden mt-4 pointer-events-none text-grey">
-          Swipe up and down to explore.
+        <p className="lg:hidden mt-4 pointer-events-none text-grey animate-pulse font-semibold">
+          [ Swipe up and down to explore. ]
         </p>
       </div>
     </motion.section>

@@ -23,7 +23,7 @@ export default function Skills() {
         <h1>Skills</h1>
 
         <p className="px-4 sm:px-0 text-base lg:text-xl text-grey leading-relaxed mb-10 mt-6">
-          I am an aspiring Full-stack developer, who brings concept to reality.
+          I am an aspiring full-stack developer, who brings concept to reality.
           <br className="hidden lg:flex" /> Below is my ever-growing list of
           technologies I specialise in.
         </p>

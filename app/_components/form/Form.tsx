@@ -86,7 +86,6 @@ export default function Form({
   }
 
   return (
-    // I haven't used required as we will check if the field is dirty before the submit/next btn is clickable.
     <div className="h-full">
       {children}
       <form

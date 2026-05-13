@@ -2,7 +2,6 @@ import { ModalName } from "@/app/_context/ModalContext";
 import { ProjectMonolithDataProps } from "@/app/_lib/data";
 import { Edges, Image, RoundedBoxGeometry, Text } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { hover } from "framer-motion";
 import {
   Dispatch,
   SetStateAction,
@@ -20,9 +19,6 @@ interface ProjectMonolithProps extends ProjectMonolithDataProps {
   scrollProgress: number;
   setScrollProgress: Dispatch<SetStateAction<number>>;
 }
-
-// Note: Monolith spinning is calibrated for Rig.tsx const startZ = 8; & const endZ = -80;
-// Note 2: When we add more sections to the site, the cards will fall out of sync.
 
 export default function ProjectMonolith({
   id,
@@ -149,12 +145,16 @@ export default function ProjectMonolith({
           localMouse.current.y = (e.uv!.y - 0.5) * 0.2;
         }
       }}
-      onPointerOver={() => setHovered(true)}
+      onPointerOver={() => {
+        if (scrollProgress < 0.255) return;
+        setHovered(true);
+      }}
       onPointerOut={() => {
         setHovered(false);
         localMouse.current.set(0, 0);
       }}
       onClick={(e) => {
+        if (scrollProgress < 0.255) return;
         e.stopPropagation();
         handleProjectClick(id, modalName);
       }}
@@ -261,17 +261,6 @@ export default function ProjectMonolith({
       {/* Skill Icons */}
       {!isMobile && (
         <>
-          {/* <group position={[-2, 0, 0.1]}>
-            {icons.map((icon, index) => (
-              <Image
-                key={icon}
-                url={icon}
-                position={[0 + index * 0.6, 0, 0.41]}
-                scale={[0.4, 0.4]}
-                transparent
-              />
-            ))}
-          </group> */}
           <group position={[0, 0.16, 0.1]}>
             {icons.map((icon, index) => (
               <Image

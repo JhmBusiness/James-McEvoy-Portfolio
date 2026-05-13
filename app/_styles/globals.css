@@ -110,3 +110,15 @@ input:focus {
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.hud-keyboard-icon-bg {
+  background-image: url("/hud/arrow-bg.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.hud-btn-bg {
+  background-image: url("/hud/btn-bg.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}

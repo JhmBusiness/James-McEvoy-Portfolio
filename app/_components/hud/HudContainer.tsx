@@ -2,6 +2,7 @@
 import { motion, useScroll } from "framer-motion";
 import { useMediaQuery } from "usehooks-ts";
 import SectionTitle from "./SectionTitle";
+import ArrowKeyControlIcons from "./ArrowKeyControlIcons";
 
 export default function HudContainer() {
   const isMobile = useMediaQuery("(max-width: 1024px)");
@@ -17,6 +18,7 @@ export default function HudContainer() {
           className="pointer-events-none fixed inset-0 z-40"
         >
           <SectionTitle scrollYProgress={scrollYProgress} />
+          <ArrowKeyControlIcons />
         </motion.div>
       )}
     </>

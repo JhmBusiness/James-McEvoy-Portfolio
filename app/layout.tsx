@@ -28,14 +28,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${montserrat.variable} ${sourceSans.variable}`}>
       <body className="bg-black text-white antialiased pointer-events-auto">
-        <div className="fixed inset-0 z-0">
-          <ModalProvider>
+        <ModalProvider>
+          <div className="fixed inset-0 z-0">
             <Scene />
-          </ModalProvider>
-        </div>
+          </div>
 
-        {/* HUD */}
-        <HudContainer />
+          {/* HUD */}
+          <HudContainer />
+        </ModalProvider>
 
         <main
           id="root"

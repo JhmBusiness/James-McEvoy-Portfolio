@@ -23,7 +23,7 @@ export default function HeroMesh({ isMobile }: IsMobile) {
   return (
     <Float speed={1.5} rotationIntensity={0.5} floatIntensity={1}>
       <mesh ref={meshRef}>
-        <icosahedronGeometry args={isMobile ? [1.6, 0] : [2, 0]} />
+        <icosahedronGeometry args={isMobile ? [1.6, 0] : [3, 0]} />
         <meshStandardMaterial
           ref={materialRef}
           wireframe

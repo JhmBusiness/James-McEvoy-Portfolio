@@ -49,17 +49,16 @@ export default function Rig({
     requestAnimationFrame(() => {
       setScrollProgress(0);
     });
-  }, []);
+  }, [setScrollProgress]);
 
+  // Mobile swipe listener and funcs - START
   function scrollToSection(section: number) {
     const totalHeight =
       document.documentElement.scrollHeight - window.innerHeight;
 
-    const maxSections = 3;
+    const sectionProgress = [0, 0.275, 0.66, 1];
 
-    const progress = section / maxSections;
-
-    const targetScroll = totalHeight * progress;
+    const targetScroll = totalHeight * sectionProgress[section];
 
     window.scrollTo({
       top: targetScroll,
@@ -67,7 +66,6 @@ export default function Rig({
     });
   }
 
-  // Mobile swipe listener and funcs - START
   function handleSwipeUp() {
     setCurrentSection((prev) => {
       const next = Math.min(prev + 1, 3);
@@ -75,10 +73,6 @@ export default function Rig({
       scrollToSection(next);
 
       return next;
-    });
-
-    setScrollProgress((prev) => {
-      return Math.min(prev + 0.25, 1);
     });
   }
 
@@ -89,11 +83,6 @@ export default function Rig({
       scrollToSection(next);
 
       return next;
-    });
-    setScrollProgress((prev) => {
-      if (prev === 0) return 0;
-
-      return prev - 0.25;
     });
   }
 
@@ -136,6 +125,117 @@ export default function Rig({
     };
   }, [isMobile, modalState]);
   // Mobile swipe listener and funcs - END
+
+  // Keyboard controls, click events, and funcs - START
+  useEffect(() => {
+    if (isMobile || modalState.name !== null) return;
+
+    function handleKeyboardControls(e: KeyboardEvent) {
+      const target = e.target as HTMLElement;
+
+      const isTyping =
+        target.tagName === "INPUT" ||
+        target.tagName === "TEXTAREA" ||
+        target.isContentEditable;
+
+      if (isTyping) return;
+
+      if (e.repeat) return;
+
+      if (["ArrowUp", "ArrowDown"].includes(e.code)) {
+        e.preventDefault();
+      }
+
+      if (e.key === "ArrowUp") {
+        setCurrentSection((prev) => {
+          const next = Math.min(prev + 1, 3);
+
+          scrollToSection(next);
+
+          return next;
+        });
+      }
+
+      if (e.key === "w") {
+        if (scrollProgress >= 0.99) return;
+        setCurrentSection((prev) => {
+          const next = Math.min(prev + 1, 3);
+
+          scrollToSection(next);
+
+          return next;
+        });
+      }
+
+      if (e.key === "ArrowDown") {
+        setCurrentSection((prev) => {
+          const next = Math.max(prev - 1, 0);
+
+          scrollToSection(next);
+
+          return next;
+        });
+      }
+
+      if (e.key === "s") {
+        if (scrollProgress >= 0.99) return;
+
+        setCurrentSection((prev) => {
+          const next = Math.max(prev - 1, 0);
+
+          scrollToSection(next);
+
+          return next;
+        });
+      }
+    }
+
+    function handleClickControls(e: Event) {
+      if (!e.currentTarget) return;
+      const element = e.currentTarget as HTMLElement;
+      console.log(element.id);
+      if (element.id === "hudTopBtn") {
+        setCurrentSection((prev) => {
+          const next = Math.min(prev + 1, 3);
+
+          scrollToSection(next);
+
+          return next;
+        });
+      } else if (element.id === "hudBottomBtn") {
+        setCurrentSection((prev) => {
+          const next = Math.max(prev - 1, 0);
+
+          scrollToSection(next);
+
+          return next;
+        });
+      } else {
+        return;
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyboardControls);
+    document
+      .getElementById("hudTopBtn")!
+      .addEventListener("click", handleClickControls);
+    document
+      .getElementById("hudBottomBtn")!
+      .addEventListener("click", handleClickControls);
+    // Remove event listeners
+    return () => {
+      window.removeEventListener("keydown", handleKeyboardControls);
+
+      document
+        .getElementById("hudTopBtn")
+        ?.removeEventListener("click", handleClickControls);
+
+      document
+        .getElementById("hudBottomBtn")
+        ?.removeEventListener("click", handleClickControls);
+    };
+  }, [isMobile, modalState.name, setCurrentSection, setScrollProgress]);
+  // Keyboard controls and funcs - END
 
   // Rigs core function
   useFrame((state) => {
