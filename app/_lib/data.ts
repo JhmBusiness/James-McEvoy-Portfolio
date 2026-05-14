@@ -54,7 +54,7 @@ export const projectData: ProjectMonolithDataProps[] = [
     title: "SMILING SOLE REFLEXOLOGY",
     modalName: "smiling-sole-reflexology",
     description:
-      "Smiling Sole Reflexology is a website built for both clients and employees,  featuring a built in dashboard to manage business inquiries.",
+      "Smiling Sole Reflexology is a website built for both clients and employees,  featuring a built-in dashboard to manage business inquiries.",
     pillarImgDesktop: "/projects/smiling-sole-reflexology/monolith.webp",
     pillarImgMobile: "/projects/smiling-sole-reflexology/monolith-mobile.png",
     heroImg: "/projects/smiling-sole-reflexology/hero-img.png",
@@ -80,7 +80,7 @@ export const projectData: ProjectMonolithDataProps[] = [
     title: "COBALT DEVELOPMENT",
     modalName: "cobalt-development",
     description:
-      "Cobalt Development is a subsidiary company of Cobalt Group. The client wanted a website that followed a matching theme to their other websites; except that this one will both introduce the company and showcase their work.",
+      "Cobalt Development is a subsidiary company of Cobalt Group. The client wanted a website that followed a matching theme to their other websites; while also introducing the company and showcasing its work.",
     pillarImgDesktop: "/projects/cobalt-development/monolith.webp",
     pillarImgMobile: "/projects/cobalt-development/monolith-mobile.png",
     heroImg: "/projects/cobalt-development/hero-img.png",
@@ -144,7 +144,7 @@ export const projectData: ProjectMonolithDataProps[] = [
     title: "COBALT ALUMINIUM",
     modalName: "cobalt-aluminium",
     description:
-      "Cobalt Aluminium, a subsidiary of Cobalt Group, was my first client project that I took on. This project features a company that sells windows, doors, and their accessories. The client needed a website to sell these products, and show their technical details.",
+      "Cobalt Aluminium, a subsidiary of Cobalt Group, was my first client project that I took on. This project features a company that sells windows, doors, and their accessories. The client needed a website to sell these products, and showcase their technical details.",
     pillarImgDesktop: "/projects/cobalt-aluminium/monolith.webp",
     pillarImgMobile: "/projects/cobalt-aluminium/monolith-mobile.png",
     heroImg: "/projects/cobalt-aluminium/hero-img.png",
@@ -177,11 +177,11 @@ export const skillData: SkillDataProps[] = [
   { id: 7, label: "Vite", src: "/skills/vite.svg" },
   { id: 8, label: "Node.js", src: "/skills/nodejs.svg" },
   { id: 9, label: "Supabase", src: "/skills/supabase.svg" },
-  { id: 10, label: "PostGreSQL", src: "/skills/postgresql.svg" },
+  { id: 10, label: "PostgreSQL", src: "/skills/postgresql.svg" },
   { id: 11, label: "Three.js", src: "/skills/threejs.svg" },
   { id: 12, label: "Framer Motion", src: "/skills/framer.svg" },
   { id: 13, label: "Tailwind CSS", src: "/skills/tailwind.svg" },
-  { id: 14, label: "apexCharts", src: "/skills/apexCharts.svg" },
+  { id: 14, label: "ApexCharts", src: "/skills/apexCharts.svg" },
 ];
 
 export interface LoadingScreenDataProps {

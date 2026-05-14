@@ -156,7 +156,7 @@ function ThePondModal() {
           <TechnologyStackIcons logos={logos} />
         </div>
         <p className="max-w-200 mx-auto">
-          Next.js and TypeScript, are the foundation of the app; while Framer
+          Next.js and TypeScript are the foundation of the app; while Framer
           Motion and Tailwind CSS bring the overall aesthetic. ApexCharts
           displays the users statistics through graphs, with Supabase handling
           those stats using SQL, Cruds, and the applications tables.
@@ -176,7 +176,7 @@ function ThePondModal() {
             />
             <div className="w-fit max-w-120 lg:max-w-max lg:w-75 shrink-0">
               <p className="mb-6">
-                When users first enter the app, the first thing they see is the
+                When users first enter the app, the first thing they see is
                 their dashboard, which features their:
               </p>
               <ul className="list-disc ml-5.5">
@@ -196,13 +196,13 @@ function ThePondModal() {
               className="w-full lg:w-4/5 max-w-[600px]"
             />
             <p className="text-right w-fit max-w-120 lg:max-w-max lg:min-w-77.5">
-              Users can create habits, posts and edit content through various
-              modals.
+              Users can create habits, publish posts, and edit content through
+              modal-driven workflows.
               <br />
               <br />
-              While data is handled via Supabase and TanStack Query. By
-              invalidating queries and fetching new data, the app provides
-              immediate feedback to users without the page reloading.
+              Supabase handles data storage while TanStack Query manages
+              caching, cache invalidation, and real-time UI updates without full
+              page reloads.
             </p>
           </div>
           {/* Third section */}
@@ -214,9 +214,9 @@ function ThePondModal() {
             />
             <div className="w-fit max-w-120 lg:max-w-max lg:min-w-85">
               <p className="mb-6">
-                The explore page is where all of the users posts get shown.
+                The explore page is where all user posts are displayed.
               </p>
-              <p>Each posts consists of the following:</p>
+              <p>Each post consists of the following:</p>
               <ul className="list-disc ml-5.5">
                 <li>Their milestone streak</li>
                 <li>Title & description</li>
@@ -232,14 +232,10 @@ function ThePondModal() {
       <div className="mb-10 sm:mb-20 lg:mb-40 flex justify-center items-center flex-col">
         <h3>WHAT I&apos;VE LEARNT:</h3>
         <p className="max-w-200 mx-auto mt-6 pb-10">
-          This project pushed my development forward. I explored how a backend
-          interacts across relational tables, handled complex data caching, and
-          implemented Google Auth. I also got to strengthen my understanding of
-          the React component tree and state management.
-          <br />
-          <br />
-          The work was difficult, but I succeeded in combining these features
-          into a functional application. I am looking forward to my next steps.
+          This project pushed my development forward. I explored how relational
+          data interacts across backend tables, handled complex caching flows,
+          and implemented Google Auth. It also strengthened my understanding of
+          React state management and component architecture.
         </p>
         <Link
           href={liveUrl}
@@ -298,10 +294,11 @@ function SmilingSoleReflexologyModal() {
           <TechnologyStackIcons logos={logos} />
         </div>
         <p className="max-w-200 mx-auto">
-          Built with Next.js, and utilising its middleware; we protect the
+          Built with Next.js and utilising its middleware; we protect the
           employee only dashboard which fetches data from Supabase which stores
-          all client inquiries. Framer motion and Tailwind CSS support
-          animations across the site, as well as the general aesthetic.
+          all client inquiries. Framer Motion and Tailwind CSS support
+          animations across the site, as well as the general visual
+          presentation.
         </p>
       </div>
 
@@ -321,11 +318,11 @@ function SmilingSoleReflexologyModal() {
               because it was my first time creating one.
               <br />
               <br />
-              The dashboard lists the inquiries, whether they&apos;ve been seen
-              to.
+              The dashboard lists the inquiries, and whether they have been
+              reviewed.
               <br />
               <br />
-              Opening an inquiry lets you see the forms submission.
+              Opening an inquiry displays the full form submission.
             </p>
           </div>
           {/* Second section */}
@@ -340,8 +337,8 @@ function SmilingSoleReflexologyModal() {
               all of the treatments they provide.
               <br />
               <br />
-              Framer motion and Reacts useState hook have been used here to
-              manage the toggled expand state.
+              Framer Motion and React&apos;s useState hook have been used here
+              to manage the toggled expand state.
             </p>
           </div>
           {/* Third section */}
@@ -369,10 +366,9 @@ function SmilingSoleReflexologyModal() {
       <div className="mb-10 sm:mb-20 lg:mb-40 flex justify-center items-center flex-col">
         <h3>WHAT I&apos;VE LEARNT:</h3>
         <p className="max-w-200 mx-auto mt-6 pb-10">
-          This was my first time creating a project that integrated the
-          front-end and back-end. There were a few setbacks integrating Supabase
-          Auth with Next.js Middleware, but the documentation was clear and
-          concise, which resolved any issues quickly.
+          This project gave me experience integrating both the front-end and
+          back-end. Integrating Supabase Auth with Next.js Middleware gave me
+          deeper experience with authentication flows and protected routes.
         </p>
         <Link
           href={liveUrl}
@@ -432,7 +428,7 @@ function CobaltDevelopmentModal() {
         </div>
         <p className="max-w-200 mx-auto">
           Next.js is the framework used for this website, with Tailwind CSS and
-          Framer Motion handling the animation and aesthetic.
+          Framer Motion handling the animation and general visual presentation.
         </p>
       </div>
 
@@ -448,13 +444,13 @@ function CobaltDevelopmentModal() {
               className="w-full lg:w-4/5 max-w-[666px]"
             />
             <p className="w-fit max-w-120 lg:max-w-max lg:w-75 shrink-0">
-              The main feature of this website is to advertise their development
-              projects which are featured on their other website Cobalt
-              Construction.
+              The primary goal of the website is to showcase the client&apos;s
+              development projects, which are featured on their other website
+              Cobalt Construction.
               <br />
               <br />
               The cards feature a PDF brochure in the top right, and the link to
-              the respected project on Cobalt Construction.
+              the respective project on Cobalt Construction.
             </p>
           </div>
           {/* Second section */}
@@ -465,9 +461,9 @@ function CobaltDevelopmentModal() {
               className="w-full lg:w-4/5 max-w-[600px]"
             />
             <p className="text-right w-fit max-w-120 lg:max-w-max lg:min-w-77.5">
-              The section uses a standard HTML form secured by reCAPTCHA. Upon
-              form submission, the data is sent to Formspree for the client to
-              access.
+              The contact section uses a standard HTML form secured by
+              reCAPTCHA. Upon form submission, the data is sent to Formspree for
+              the client to access.
             </p>
           </div>
         </div>
@@ -481,7 +477,7 @@ function CobaltDevelopmentModal() {
           Next.js SSG (static site generation). This website didn&apos;t need to
           fetch any external data, so it was never much of a concern; however,
           when running `npm run build`, I had to ensure the export was set up
-          correctly for the clients folder structure.
+          correctly for the client&apos;s folder structure.
         </p>
         <Link
           href={liveUrl}
@@ -556,8 +552,8 @@ function CobaltConstructionModal() {
               className="w-full lg:w-4/5 max-w-[666px]"
             />
             <p className="w-fit max-w-120 lg:max-w-max lg:w-75 shrink-0">
-              Projects are displayed by applying the active classes to map pins
-              showing where the project was located.
+              Projects are displayed through an interactive map interface with
+              linked location pins.
               <br />
               <br />
               Each map pin is linked to their corresponding project on the
@@ -587,8 +583,8 @@ function CobaltConstructionModal() {
       <div className="mb-10 sm:mb-20 lg:mb-40 flex justify-center items-center flex-col">
         <h3>WHAT I&apos;VE LEARNT:</h3>
         <p className="max-w-200 mx-auto mt-6 pb-10">
-          Through this project, I was able to build up upon my DOM manipulation,
-          and standard CSS.
+          Through this project, I strengthened my DOM manipulation and CSS
+          skills.
         </p>
         <Link
           href={liveUrl}
@@ -663,10 +659,9 @@ function CobaltHubModal() {
               className="w-full lg:w-4/5 max-w-[666px]"
             />
             <p className="w-fit max-w-120 lg:max-w-max lg:w-75 shrink-0">
-              The lesson from this project isn&apos;t what you&apos;d think. It
-              actually comes from handling the hosting platform Hosting. It was
-              my first time using subdomains, and having to correctly manage the
-              websites folder structure.
+              This project gave me experience working with subdomains,
+              deployment workflows, and managing multi-site structures for a
+              client ecosystem.
             </p>
           </div>
         </div>
@@ -676,8 +671,8 @@ function CobaltHubModal() {
       <div className="mb-10 sm:mb-20 lg:mb-40 flex justify-center items-center flex-col">
         <h3>WHAT I&apos;VE LEARNT:</h3>
         <p className="max-w-200 mx-auto mt-6 pb-10">
-          Through this project, I was able to build up upon my DOM manipulation,
-          and standard CSS.
+          Through this project, I strengthened my DOM manipulation and CSS
+          skills.
         </p>
         <Link
           href={liveUrl}
@@ -754,16 +749,16 @@ function CobaltAluminiumModal() {
               className="w-full lg:w-4/5 max-w-[666px]"
             />
             <p className="w-fit max-w-120 lg:max-w-max lg:w-75 shrink-0">
-              The website contains two rows. One for doors & windows, and the
-              other their accessories.
+              The homepage separates products into two categories: doors &
+              windows and their accessories.
               <br />
               <br />
-              Each card contains a link to the products page, and a tag of
+              Each card contains a link to the products page and a tag of
               whether it is a window or door.
               <br />
               <br />
-              Below the carousel, a custom scrollbar can be found, made from
-              pure JavaScript
+              Below the carousel is a custom JavaScript scrollbar built
+              specifically for the product slider.
             </p>
           </div>
           {/* Second section */}
@@ -775,9 +770,9 @@ function CobaltAluminiumModal() {
             />
 
             <p className="text-right w-fit max-w-120 lg:max-w-max lg:min-w-77.5">
-              The section uses a standard HTML form secured by reCAPTCHA. Upon
-              form submission, the data is sent to Formspree for the client to
-              access.
+              The contact section uses a standard HTML form secured by
+              reCAPTCHA. Upon form submission, the data is sent to Formspree for
+              the client to access.
             </p>
           </div>
           {/* Third section */}
@@ -807,15 +802,15 @@ function CobaltAluminiumModal() {
       <div className="mb-10 sm:mb-20 lg:mb-40 flex justify-center items-center flex-col">
         <h3>WHAT I&apos;VE LEARNT:</h3>
         <p className="max-w-200 mx-auto mt-6 pb-10">
-          As this was my first project, there was a lot to learn. The one I like
-          to look back and laugh at because every product had its own HTML page.
-          It makes me really wish that I knew React.js back when I was building
-          it.
+          As my first client project, this was a major learning experience.
+          Looking back, this project highlights how much my approach to
+          scalability has evolved since I learned React.
           <br />
           <br />
-          My second criticism to myself is that scaling down icons and font for
-          the contact form would have made it look a lot cleaner. There are a
-          few more things, but I&apos;ll leave it up to you to spot them.
+          If I rebuilt this project today, I&apos;d simplify parts of the UI and
+          improve responsiveness across the contact section. Looking back, there
+          are a few things I&apos;d approach differently today, but it&apos;s a
+          project I learned a lot from.
         </p>
         <Link
           href={liveUrl}
